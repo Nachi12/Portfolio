@@ -35,9 +35,24 @@ function showTab(tabId) {
     aboutConsole.textContent = "";
   }
 }
-function showPreview(url) {
-  alert("Scroll down to see the preview");
+function showProjectPreview(url) {
+  alert("Scroll down to see the project preview");
   const previewFrame = document.getElementById("preview-frame");
   previewFrame.src = url;
   document.getElementById("preview-console").style.display = "block";
 }
+
+function showCertificatePreview(url) {
+  alert("Scroll down to see the certificate preview");
+  const certFrame = document.getElementById("preview-certificates-frame");
+  certFrame.src = url;
+  document.getElementById("preview-certificates-console").style.display = "block";
+}
+
+function showResumePreview(url) {
+  alert("Scroll down to see the resume preview");
+  const resumeFrame = document.getElementById("preview-resume-frame");
+  resumeFrame.src = url;
+  document.getElementById("preview-resume-console").style.display = "block";
+}
+
