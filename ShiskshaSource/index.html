@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title  link="index.html">ShikshaSource - College Projects</title>
+    <link href="output.css" rel="stylesheet" />
+    <!-- Additional custom styles -->
+    <style>
+      .service-card {
+        transition: all 0.3s ease;
+      }
+      .service-card:hover {
+        transform: translateY(-5px);
+      }
+      .lang-icon {
+        transition: all 0.3s ease;
+      }
+      .lang-icon:hover {
+        transform: scale(1.1);
+      }
+      
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #444444;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #252525;
+  min-width: 150px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  border-radius:10px;
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: rgb(255, 255, 255);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #878787;}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+body.light-theme {
+    background-color: white;
+    color: black;
+  }
+
+  body.dark-theme {
+    background-color: #1a202c;
+    color: white;
+  }
+
+    </style>
+  </head>
+  <body class=" text-white pl-4" class="transition-colors duration-300 bg-white text-black" id="page">
+    <!-- Navigation -->
+    <nav
+      class="container mx-auto px-4 py-4 flex justify-between items-center bg-transparent-200"
+    >
+      <div class="font-bold text-xl">
+        <!-- Shiksha<span class="text-blue-500">Source</span> -->
+        <img src="Images/log.png" width="160px" height="40px" border-radius="10px" href=""/>
+      </div>
+      <div class="flex space-x-2">
+        <button> <a href="index.html"
+   class="px-4 py-2 rounded-full bg-gray-800 hover:bg-gray-700 text-white inline-block">
+  Home
+</a></button>
+        
+       <button> <a href="About.html"
+   class="px-4 py-2 rounded-full bg-gray-800 hover:bg-gray-700 text-white inline-block">
+  About
+</a></button>
+        
+
+
+<div class="px-4 py-2 rounded-full bg-gray-800 hover:bg-gray-700 text-white inline-block">
+  <button onclick="myFunction()" class="dropbtn">Select Projects🔽 </button>
+  <div id="myDropdown" class="dropdown-content">
+    <a href="JavascriptProjects.html">Javascript Projects</a>
+    <a href="PythonProjects.html">Python Projects</a>
+    <a href="AI-ML-Projects.html">AI-ML-Projects</a>
+    <a href="Excel-Projects.html">Excel-Projects</a>
+  </div>
+</div>
+
+
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"
+            />
+
+
+          </svg>
+        </button>
+       <a href="Sign-Up.html"
+   class="px-4 py-2 rounded-full bg-gray-800 hover:bg-gray-700 text-white inline-block">
+  Sign In
+</a>
+
+        <!-- <div class="flex justify-end p-4"> -->
+    <button id="themeToggleBtn"
+            class="text-2xl px-6 py-2 rounded-full bg-blue-300 hover:bg-green-500">
+      🌙 
+    </button>
+  </div>
+
+  <!-- <div class="text-center mt-10"> -->
+    <!-- <h1 class="text-4xl font-bold">Hello, Theme World!</h1>
+    <p class="mt-4">Click the icon to toggle between light and dark mode.</p> -->
+  </div>
+
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      class="container mx-auto px-4 py-16 grid grid-cols-1 md:grid-cols-2 items-center"
+    >
+      <!-- Left Column: Text Content -->
+      <div id="hero">
+        <h1 class="text-4xl font-bold mb-[60px]">
+          Stand Out with Professionally-Made <br />
+          College Projects
+        </h1>
+        <p class="text-gray-400 mb-[60px]">
+          🎓Say goodbye to last-minute stress! Get high-quality, 100%
+          plagiarism-free projects tailored to your requirements — mini or
+          major, all delivered on time at prices that won’t break the bank.
+        </p>
+        <button
+          class="px-6 py-3 bg-blue-600 hover:bg-blue-800 rounded-full font-medium"
+        >
+          🚀 Get My Project Now
+        </button>
+      </div>
+
+      <!-- Right Column: Image -->
+      <div class="flex justify-end">
+        <img
+          src="images/Hero Image.png"
+          alt="Hero Image"
+          width="470px"
+          height="511px"
+        />
+      </div>
+    </section>
+
+    <!-- Languages Section -->
+    <section class="container mx-auto px-4 py-16 gap-4">
+      <h2 class="text-2xl font-bold text-center mb-12">Languages We Cover</h2>
+      <div class="flex justify-between space-x-8">
+        <div class="lang-icon">
+          <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+            alt="HTML5"
+            class="h-16 w-16"
+          />
+          <p class="text-center mt-2">HTML</p>
+        </div>
+        <div class="lang-icon">
+          <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+            alt="CSS"
+            class="h-16 w-16"
+          />
+          <p class="text-center mt-2">CSS</p>
+        </div>
+        <div class="lang-icon">
+          <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+            alt="JavaScript"
+            class="h-16 w-16"
+          />
+          <p class="text-center mt-2">JAVASCRIPT</p>
+        </div>
+        <div class="lang-icon">
+          <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+            alt="Python"
+            class="h-16 w-16"
+          />
+          <p class="text-center mt-2">PYTHON</p>
+        </div>
+        <div class="lang-icon">
+          <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
+            alt="PHP"
+            class="h-16 w-16"
+          />
+          <p class="text-center mt-2">PHP</p>
+        </div>
+        <div class="lang-icon">
+          <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"
+            alt="C++"
+            class="h-16 w-16"
+          />
+          <p class="text-center mt-2">C++</p>
+        </div>
+        <div class="lang-icon">
+          <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg"
+            alt="CSS"
+            class="h-16 w-16"
+          />
+
+          <p class="text-center mt-2">django</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="container mx-auto px-4 py-16">
+      <h2 class="text-2xl font-bold text-center mb-12">Why Choose US?</h2>
+
+      <!-- On Time Delivery -->
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-20 pb-40 items-center"
+      >
+        <div>
+          <img
+            src="Images/On time Project.png"
+            alt="On Time Delivery"
+            class="rounded-lg w-full h-auto"
+            width="600"
+            height="400"
+          />
+        </div>
+        <div>
+          <h3 class="text-xl font-bold mb-2">On Time Delievery</h3>
+          <p class="text-gray-400 text-justify">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat.
+          </p>
+        </div>
+      </div>
+
+      <!-- Error Free Code -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+        <div class="order-2 md:order-1">
+          <h3 class="text-xl font-bold mb-4">Error Free Code</h3>
+          <p class="text-gray-400 text-justify tracking-wider">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat.
+          </p>
+        </div>
+        <div class="order-1 md:order-2">
+          <img
+            src="Images/Error Free.png"
+            alt="Error Free Code"
+            class="rounded-lg w-full h-auto"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="container mx-auto px-4 py-16">
+      <h2 class="text-2xl font-bold text-center mb-12">Our Outstanding Projects</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Project 1 -->
+        <div class="bg-gray-900 rounded-lg p-6 service-card">
+          <h3 class="text-lg font-semibold mb-4">Interior Design Project</h3>
+          <div class="flex justify-center mb-4">
+            <img
+              src="/api/placeholder/300/200"
+              alt="Interior Design"
+              class="rounded-lg"
+            />
+          </div>
+          <div class="flex justify-center">
+            <button
+              class="px-4 py-2 bg-blue-400 hover:bg-blue-700 rounded-full"
+            >
+              View Project
+            </button>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="bg-gray-900 rounded-lg p-6 service-card">
+          <h3 class="text-lg font-semibold mb-4">Social Media Platform</h3>
+          <div class="flex justify-center mb-4">
+            <img
+              src="/api/placeholder/300/200"
+              alt="Social Media Platform"
+              class="rounded-lg"
+            />
+          </div>
+          <div class="flex justify-center">
+            <button
+              class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-full"
+            >
+              View Project
+            </button>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="bg-gray-900 rounded-lg p-6 service-card">
+          <h3 class="text-lg font-semibold mb-4">Book My Show</h3>
+          <div class="flex justify-center mb-4">
+            <img
+              src="/api/placeholder/300/200"
+              alt="Book My Show"
+              class="rounded-lg"
+            />
+          </div>
+          <div class="flex justify-center">
+            <button
+              class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-full"
+            >
+              View Project
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="container mx-auto px-4 py-16">
+      <h2 class="text-2xl font-bold text-center mb-12">Our Team</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Team Member 1 -->
+        <div class="bg-gray-800 rounded-lg p-6 text-center service-card">
+          <div class="flex justify-center mb-4">
+            <div class="w-24 h-24 bg-gray-700 rounded-full"></div>
+          </div>
+          <h3 class="text-lg font-semibold">Akshay Rao</h3>
+          <p class="text-gray-400 mb-4">Senior Developer</p>
+          <p class="text-sm text-gray-400">
+            Well Experienced in The Developing Websites and making unique
+            project for students
+          </p>
+        </div>
+
+        <!-- Team Member 2 -->
+        <div class="bg-gray-800 rounded-lg p-6 text-center service-card">
+          <div class="flex justify-center mb-4">
+            <div class="w-24 h-24 bg-gray-700 rounded-full"></div>
+          </div>
+          <h3 class="text-lg font-semibold">Kishor M B</h3>
+          <p class="text-gray-400 mb-4">Data Engineer</p>
+          <p class="text-sm text-gray-400">
+            A Good Grip in the python coding and AI-ML tasks
+          </p>
+        </div>
+
+        <!-- Team Member 3 -->
+        <div class="bg-gray-800 rounded-lg p-6 text-center service-card">
+          <div class="flex justify-center mb-4">
+            <div class="w-24 h-24 bg-gray-700 rounded-full"></div>
+          </div>
+          <h3 class="text-lg font-semibold">Nachiketa NR</h3>
+          <p class="text-gray-400 mb-4">Full Stack Developer</p>
+          <p class="text-sm text-gray-400">
+            A good knowledge Full Stack Developer the website in MERN Languages
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Social Media Footer -->
+    <footer class="bg-gradient-to-r from-blue-600 to-blue-800 py-8">
+      <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Follow Us On:</h3>
+          <div class="flex space-x-4">
+            <a href="#" class="flex items-center">
+              <div class="w-4 h-4 bg-white"></div>
+              <span class="ml-2">Instagram</span>
+            </a>
+          </div>
+          <div class="flex space-x-4 mt-2">
+            <a href="#" class="flex items-center">
+              <div class="w-4 h-4 bg-white"></div>
+              <span class="ml-2">Facebook</span>
+            </a>
+          </div>
+          <div class="flex space-x-4 mt-2">
+            <a href="#" class="flex items-center">
+              <div class="w-4 h-4 bg-white"></div>
+              <span class="ml-2">WhatsApp</span>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Follow Us On:</h3>
+          <!-- Additional social links can go here -->
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript for interactions -->
+   <script>
+  function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+
+ const toggleBtn = document.getElementById("themeToggleBtn");
+    const body = document.getElementById("page");
+
+    let darkMode = false;
+
+    toggleBtn.addEventListener("click", () => {
+      darkMode = !darkMode;
+
+      if (darkMode) {
+        body.classList.remove("bg-white", "text-black");
+        body.classList.add("bg-gray-900", "text-white");
+        toggleBtn.textContent = "🌞";
+        toggleBtn.classList.remove("bg-gray-200", "hover:bg-gray-300");
+        toggleBtn.classList.add("bg-gray-800", "hover:bg-gray-700");
+      } else {
+        body.classList.remove("bg-gray-900", "text-white");
+        body.classList.add("bg-white", "text-black");
+        toggleBtn.textContent = "🌙 ";
+        toggleBtn.classList.remove("bg-gray-800", "hover:bg-green-700");
+        toggleBtn.classList.add("bg-green-200", "hover:bg-green-300");
+      }
+    });
+
+
+</script>
+
+
+  </body>
+</html>

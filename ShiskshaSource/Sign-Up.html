@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shiksha Source Sign Up</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="min-h-screen flex flex-col md:flex-row">
+    <!-- Left: Logo Panel -->
+    <div
+      class="md:w-1/2 w-full bg-black flex items-center justify-center py-12"
+    >
+      <h1 class="text-white text-4xl font-light">
+        Shiksha <span class="text-blue-600 font-normal">Source</span>
+      </h1>
+    </div>
+
+    <!-- Right: Form Panel -->
+    <div
+      class="md:w-1/2 w-full flex items-center justify-center bg-white py-12 px-6"
+    >
+      <div class="w-full max-w-sm">
+        <!-- Heading -->
+        <h2 class="text-xl font-medium text-center mb-6">Sign Up</h2>
+
+        <!-- Email -->
+        <div class="mb-4">
+          <label class="block text-sm font-semibold mb-1">E-mail</label>
+          <input
+            type="email"
+            placeholder="enter-registered email"
+            class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
+          />
+        </div>
+
+        <!-- Password -->
+        <div class="mb-6">
+          <label class="block text-sm font-semibold mb-1">Password</label>
+          <input
+            type="password"
+            placeholder="enter password"
+            class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
+          />
+        </div>
+
+        <!-- Sign Up Button -->
+        <a
+          href="index.html"
+          class="block w-full text-center bg-blue-600 text-white font-medium py-2 rounded hover:bg-blue-700 transition"
+        >
+          Sign Up
+        </a>
+
+        <!-- Account Creation Link -->
+        <p class="text-center text-sm mt-4">
+          <a href="Sign-In.html" class="text-blue-600 hover:underline"
+            >Create Shiksha Source Account</a
+          >
+        </p>
+
+        <!-- Divider -->
+        <div class="flex items-center my-4">
+          <div class="flex-grow border-t border-gray-300"></div>
+          <span class="mx-2 text-gray-500 text-sm">or</span>
+          <div class="flex-grow border-t border-gray-300"></div>
+        </div>
+
+        <!-- Google Sign-in -->
+        <div class="flex justify-center">
+          <img
+            src="Images/Google.png"
+            alt="Google Sign-in"
+            class="w-12 h-12 cursor-pointer"
+          />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
