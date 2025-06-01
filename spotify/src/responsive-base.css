@@ -1,0 +1,85 @@
+/* ========== Reset and Base Styles ========== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 100%; /* 16px base */
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  line-height: 1.6;
+  color: #ffffff;
+  background-color: #fff;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* ========== Responsive Typography ========== */
+h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+h2 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+}
+p {
+  font-size: clamp(1rem, 2.5vw, 1.125rem);
+}
+
+/* ========== Responsive Containers ========== */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* ========== Responsive Images ========== */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ========== Responsive Layout (Flex/Grid) ========== */
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+/* ========== Media Queries ========== */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 95%;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 90%;
+  }
+  .flex {
+    flex-direction: column;
+  }
+}

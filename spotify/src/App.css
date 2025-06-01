@@ -1,0 +1,11 @@
+.mainContainer {
+  /* border: 2px solid red; */
+  height: 100vh;
+  background-color: black;
+}
+.mainSectinoContetntContainer {
+  /* border: 2px solid gray; */
+  display: flex;
+  height: 80%;
+  justify-content: space-evenly;
+}
