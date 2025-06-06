@@ -133,7 +133,7 @@ body {
   color: var(--highlight);
 }
 .h22 {
-  border: 2px solid salmon;
+  /* border: 2px solid salmon; */
   font-size: 20px;
   /* margin-top: -10%; */
 }
