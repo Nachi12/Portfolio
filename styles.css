@@ -114,8 +114,10 @@ body {
 .highlight-tag {
   /* color: var(--highlight); */
   font-size: 30px;
+  /* margin-top: -100%; */
 }
 .h1 {
+  /* border: 2px solid orange; */
   font-size: 30px;
   color: var(--highlight);
 }
@@ -151,16 +153,26 @@ body {
 }
 
 button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
   background-color: var(--bg-tab-active);
   color: var(--font-color);
   border: 1px solid var(--highlight);
-  padding: 4px 10px;
-  font-family: "Fira Code", monospace;
-  cursor: pointer;
   border-radius: 4px;
+
+  padding: 6px 12px;
+  font-family: "Fira Code", monospace;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
   margin-left: 10px;
-  transition: 0.3s;
+  transition: background-color 0.3s ease;
+  vertical-align: middle;
+  white-space: nowrap;
 }
+
 button:hover {
   background-color: var(--highlight);
   color: #000;
