@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio</title>
     <link href="styles.css" rel="stylesheet" />
-   
   </head>
   <body>
     <div class="sidebar">
@@ -22,7 +21,6 @@
           src="https://img.icons8.com/?size=48&id=Dj3XwCB6cihe&format=png"
           title="About"
           onclick="showTab('about')"
-          
         />
         <img
           id="icon-projects"
@@ -42,6 +40,12 @@
           title="resume"
           onclick="showTab('resume')"
         />
+        <!-- <img
+          id="icon-Link"
+          src="https://img.icons8.com/?size=48&id=kktvCbkDLbNb&format=png"
+          title="Link"
+          onclick="showTab('Link')"
+        /> -->
         <img
           id="icon-contact"
           src="https://img.icons8.com/?size=48&id=5HULZmbCmt0r&format=png"
@@ -59,6 +63,7 @@
       <div class="file">├── projects.js</div>
       <div class="file">├── certificates.js</div>
       <div class="file">├── resume.js</div>
+      <!-- <div class="file">├── Links.js</div> -->
       <div class="file">└── contact.js</div>
     </div>
 
@@ -73,7 +78,11 @@
         <div class="tab" id="tab-projects" onclick="showTab('projects')">
           projects.js
         </div>
-        <div class="tab" id="tab-certificates" onclick="showTab('certificates')">
+        <div
+          class="tab"
+          id="tab-certificates"
+          onclick="showTab('certificates')"
+        >
           certificates.js
         </div>
         <div class="tab" id="tab-resume" onclick="showTab('resume')">
@@ -87,35 +96,53 @@
       <!--prettier-ignore-start -->
       <div class="code active" id="code-home">
         <!-- This is the H1 section -->
-<!-- prettier-ignore -->
-<span class="h1">&lt;h1&gt;</span> <span class="highlight-tag">I’am NACHIKETA NR —
-I don’t just build, I elevate.</span> <span class="h1">&lt;/h1&gt;</span><br />
+        <!-- prettier-ignore -->
+        <span class="h1">&lt;h1&gt;</span>
+        <span class="highlight-tag"
+          >I’am NACHIKETA NR — I don’t just build, I elevate.</span
+        >
+        <span class="h1">&lt;/h1&gt;</span><br />
 
-<!-- prettier-ignore -->
-<span class="p">&lt;p&gt;</span> <span class="p1">Strategist.Creator.Innovator</span>
- Bringing My experience transforming ideas into impactful digital experiences. 
- From vision to execution, I bridge creativity with results—beautifully and boldly. <span class="p">&lt;/p&gt;</span><br />
+        <!-- prettier-ignore -->
+        <span class="p">&lt;p&gt;</span>
+        <span class="p1">Strategist.Creator.Innovator</span> Bringing My
+        experience transforming ideas into impactful digital experiences. From
+        vision to execution, I bridge creativity with results—beautifully and
+        boldly. <span class="p">&lt;/p&gt;</span><br />
 
-<!-- prettier-ignore -->
-<span class="h2">&lt;h2&gt;</span> 
-<span class="h22">  🔍Specialized in:  <span class="webdesign">Web Design</span> | <span class="ui">UX/UI Design</span> |  <span class="Mern">MERN STACK DEVELOPMENT</span></span>
-<span class="h2">&lt;/h2&gt;</span>
-
+        <!-- prettier-ignore -->
+        <span class="h2">&lt;h2&gt;</span>
+        <span class="h22">
+          🔍Specialized in:
+          <span class="webdesign">Web Design</span> |
+          <span class="ui">UX/UI Design</span> |
+          <span class="Mern">MERN STACK DEVELOPMENT</span></span
+        >
+        <span class="h2">&lt;/h2&gt;</span>
       </div>
       <!--prettier-ignore-end -->
 
+      <!-- This is about Section -->
+      <!-- prettier-ignore -->
       <div class="code" id="code-about">
         <span style="color: var(--highlight)">const</span> about = {
         <span style="color: var(--accent)">name</span>: "Nachiketa NR",
-        <span style="color: var(--accent)">role</span>: "MERN Stack Developer",
-        <span style="color: var(--accent)">skills</span>: [ "HTML", "CSS",
-        "JavaScript", "React", "Mongo DB", "Express Js", "Node Js", "Tailwind
-        CSS" ] };
+        <span style="color: var(--accent)">role</span>: "Full Stack Developer[MERN]",
+        <span style="color: var(--accent)">skills</span>: {
+        <span style="color: var(--accent)">Frontend:</span>["HTML", "CSS","JavaScript","Tailwind CSS" ],
+        <span style="color: var(--accent)">Backend:</span>["Node js", "Express js"],
+        <span style="color: var(--accent)">JS-Libraries:</span>["JQuery","React js", "Ajax","Redux" ],
+        <span style="color: var(--accent)">Database:</span>["Mongo Db", "Maria Db" ],
+        <span style="color: var(--accent)">UI|UX Tools :</span>["Figma", "Adobe XD" ]
+        <span style="color: var(--accent)">Other Tools :</span>["GitHub", "Netlify","Chat-Gpt" ]
+      }
+      
+      }
       </div>
 
       <!-- This is the PRoject section -->
       <!-- prettier-ignore -->
-<div class="code" id="code-projects">
+      <div class="code" id="code-projects">
   <span style="color: var(--highlight)">const</span> projects = [<br />
   &nbsp;&nbsp;{ <br />
   &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--accent)">Title</span>: "Shisksha ",<br />
@@ -141,54 +168,74 @@ I don’t just build, I elevate.</span> <span class="h1">&lt;/h1&gt;</span><br /
   ></iframe>
 </div>
 </div>
+      <!-- This is the end of project section -->
 
-<!-- This is the end of project section -->
+      <!-- About Console Output -->
+      <pre
+        id="about-console"
+        class="console-output"
+        style="display: none"
+      ></pre>
 
-
-<!-- About Console Output -->
-<pre id="about-console" class="console-output" style="display: none;"></pre>
-
-<!-- This is the Certificate Page -->
-<div class="code" id="code-certificates">
-   <span style="color: var(--highlight)">const</span> Certificates = [<br />
-  &nbsp;&nbsp;{ <br />
-  &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--accent)">Company Name</span>: "Dave Brothers ",<br />
-  &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--accent)">Tech Used</span>: "Figma, Wireframing, Prototyping, System Design"<br />
-  &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--accent)">Role</span>: " Ux| Ui design Intern "<br />
-  &nbsp;&nbsp;&nbsp;&nbsp;<button onclick="showCertificatePreview('Certificate/_Experience Letter of Nachiketa.pdf')">Preview Certificate</button><br />
-  &nbsp;&nbsp;},<br />
-  <!-- This is second certificate section -->
-   &nbsp;&nbsp;{ <br />
-  &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--accent)">Company Name</span>: "E-patrakar ",<br />
-  &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--accent)">Tech Used</span>: "Figma, Wireframing, Prototyping, System Design"<br />
-  &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--accent)">Role</span>: " Ux| Ui design Intern "<br />
-  &nbsp;&nbsp;&nbsp;&nbsp;<button onclick="showCertificatePreview('Certificate/epatrakar.png')">Preview Certificate</button><br />
-  &nbsp;&nbsp;},<br />
-  &nbsp;&nbsp; <br />
-  &nbsp;&nbsp;{ <br />
-  &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--accent)">Company Name</span>: "Ulead ",<br />
-  &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--accent)">Tech Used</span>: "Excel"<br />
-  &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--accent)">Role</span>: " HR Intern "<br />
-  &nbsp;&nbsp;&nbsp;&nbsp;<button onclick="showCertificatePreview('Certificate/Nachiketa NR_ULead_Certificate.pdf')">Preview Certificate</button><br />
-  &nbsp;&nbsp;} <br />
-<br /><br />
+      <!-- This is the Certificate Section -->
       <!-- prettier-ignore -->
-<!-- Preview Console (Hidden by Default) -->
-<div id="preview-certificates-console" style="display:none; margin-top: 20px;">
-  <h3 style="color: var(--green)">🎖️Live Certificate Preview</h3>
-  <iframe
-    id="preview-certificates-frame"
-    width="100%"
-    height="500"
-    style="border: 1px solid #333; border-radius: 8px;"
-  ></iframe>
-</div>
-</div>
+      <div class="code" id="code-certificates">
+        <span style="color: var(--highlight)">const</span> Certificates = [<br />
+        &nbsp;&nbsp;{ <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--accent)"
+          >Company Name</span
+        >: "Dave Brothers ",<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--accent)"
+          >Tech Used</span
+        >: "Figma, Wireframing, Prototyping, System Design"<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--accent)">Role</span>: " Ux| Ui design Intern "<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<button
+          onclick="showCertificatePreview('Certificate/_Experience Letter of Nachiketa.pdf')"
+        >
+          Preview Certificate</button
+        ><br />
+        &nbsp;&nbsp;},<br />
+        <!-- This is second certificate section -->
+        &nbsp;&nbsp;{ <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--accent)"
+          >Company Name</span
+        >: "E-patrakar ",<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--accent)"
+          >Tech Used</span
+        >: "Figma, Wireframing, Prototyping, System Design"<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--accent)">Role</span>:" Ux| Ui design Intern "<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<button
+          onclick="showCertificatePreview('Certificate/epatrakar.png')"
+        >
+          Preview Certificate</button
+        ><br />
+        &nbsp;&nbsp;}
+        ]<br />
+        
+        <!-- prettier-ignore -->
+        <!-- Preview Console (Hidden by Default) -->
+        <div
+          id="preview-certificates-console"
+          style="display: none; margin-top: 20px"
+        >
+          <h3 style="color: var(--green)">🎖️Live Certificate Preview</h3>
+          <iframe
+            id="preview-certificates-frame"
+            width="100%"
+            height="500"
+            style="border: 1px solid #333; border-radius: 8px"
+          ></iframe>
+        </div>
+      </div>
 
-<!-- This is the resume section -->
-<div class="code" id="code-resume">
-  &nbsp;&nbsp;&nbsp;&nbsp;<button onclick="showResumePreview('CV White.pdf')">&lt;buton&gt; Preview Resume &lt;/buton&gt;</button><br />
-  <pre><code>
+      <!-- This is the resume section -->
+      <div class="code" id="code-resume">
+        &nbsp;&nbsp;&nbsp;&nbsp;<button
+          onclick="showResumePreview('CV White.pdf')"
+        >
+          &lt;buton&gt; Preview Resume &lt;/buton&gt;</button
+        ><br />
+        <pre><code>
     <div id="preview-resume-console" style="display:none; margin-top: 20px;">
   <h3 style="color: var(--green)">📝 Live Resume Preview</h3>
   <iframe
@@ -199,16 +246,17 @@ I don’t just build, I elevate.</span> <span class="h1">&lt;/h1&gt;</span><br /
   ></iframe>
 </div>
   </code></pre>
-</div>
+      </div>
 
+      <!-- This is the Contact section -->
+      <!-- prettier-ignore -->
       <div class="code" id="code-contact">
         <span style="color: var(--highlight)">const</span> contact = {
-        <span style="color: var(--accent)">email</span>:
-        "nrnachi34@example.com",
-        <span style="color: var(--accent)">github</span>:
-        "github.com/nachiketa",
-        <span style="color: var(--accent)">linkedin</span>:
-        "linkedin.com/in/nachiketa" };
+        <span style="color: var(--accent)">email</span>: "nrnachi34@gmail.com",
+        <span style="color: var(--accent)">github</span>: "https://github.com/Nachi12",
+        <span style="color: var(--accent)">linkedin</span>: "linkedin.com/in/nachiketa",
+        <span style="color: var(--accent)">Behance</span>: "https://www.behance.net/nachiappu" 
+      };
       </div>
     </div>
 
