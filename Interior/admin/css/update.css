@@ -1,0 +1,112 @@
+/* Basic reset to remove default browser styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2, h3 {
+    color: #012a4a;
+    margin-bottom: 15px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table tr {
+    border-bottom: 1px solid #ddd;
+}
+
+table tr:last-child {
+    border-bottom: none;
+}
+
+table td {
+    padding: 10px;
+    vertical-align: top;
+}
+
+.fontkink1 {
+    font-weight: bold;
+    color: #01497c;
+}
+
+.fontkink {
+    color: #333;
+}
+
+input[type="text"], input[type="submit"], textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+input[type="submit"] {
+    background-color: #61a5c2;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+input[type="submit"]:hover {
+    background-color: #468faf;
+}
+
+textarea {
+    resize: vertical;
+}
+
+hr {
+    margin: 20px 0;
+    border: none;
+    border-top: 1px solid #ddd;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.alert {
+    color: #fff;
+    background-color: #014f86;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .button-group {
+        flex-direction: column;
+    }
+
+    .button-group input {
+        margin-bottom: 10px;
+    }
+}

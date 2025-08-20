@@ -5,9 +5,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio</title>
-    <link href="styles.css" rel="stylesheet" />
+    <link href="./styles.css" rel="stylesheet" />
   </head>
-  <body>
+  <body >
     <div class="sidebar">
       <div class="sidebar active">
         <img
@@ -40,12 +40,7 @@
           title="resume"
           onclick="showTab('resume')"
         />
-        <!-- <img
-          id="icon-Link"
-          src="https://img.icons8.com/?size=48&id=kktvCbkDLbNb&format=png"
-          title="Link"
-          onclick="showTab('Link')"
-        /> -->
+       
         <img
           id="icon-contact"
           src="https://img.icons8.com/?size=48&id=5HULZmbCmt0r&format=png"
@@ -56,18 +51,18 @@
     </div>
 
     <div class="explorer">
-      <h3>EXPLORER</h3>
-      <div class="folder">My Portfolio</div>
-      <div class="file">├── index.html</div>
-      <div class="file">├── about.html</div>
-      <div class="file">├── projects.js</div>
-      <div class="file">├── certificates.js</div>
-      <div class="file">├── resume.js</div>
-      <!-- <div class="file">├── Links.js</div> -->
-      <div class="file">└── contact.js</div>
-    </div>
+  <h3>EXPLORER</h3>
+  <div class="folder">My Portfolio</div>
+  <div class="file">index.html</div>
+  <div class="file">about.html</div>
+  <div class="file">projects.js</div>
+  <div class="file">certificates.js</div>
+  <div class="file">resume.js</div>
+  <div class="file last">contact.js</div>
+</div>
 
-    <div class="editor">
+
+    <div class="editor" style="background-image: url('gradient.png')">
       <div class="tabs">
         <div class="tab active" id="tab-home" onclick="showTab('home')">
           index.html
@@ -101,23 +96,20 @@
         <span class="highlight-tag"
           >I’am NACHIKETA NR — I don’t just build, I elevate.</span
         >
-        <span class="h1">&lt;/h1&gt;</span><br />
+        <span class="h1">&lt;/h1&gt;</span>
 
         <!-- prettier-ignore -->
         <span class="p">&lt;p&gt;</span>
         <span class="p1">Strategist.Creator.Innovator</span> Bringing My
         experience transforming ideas into impactful digital experiences. From
         vision to execution, I bridge creativity with results—beautifully and
-        boldly. <span class="p">&lt;/p&gt;</span><br />
+        boldly. <span class="p">&lt;/p&gt;</span>
 
         <!-- prettier-ignore -->
-        <span class="h2">&lt;h2&gt;</span>
-        <span class="h22">
-          🔍Specialized in:
-          <span class="ui">UX/UI Design</span> |
+        <span class="h2">&lt;h2&gt;</span><span class="h22"> 🔍Specialized in:
+          <span class="ui">UX/UI Design</span>
           <span class="Mern">MERN STACK DEVELOPMENT</span></span
         >
-        <!-- <span class="webdesign">Web Design</span> | -->
         <span class="h2">&lt;/h2&gt;</span>
       </div>
       <!--prettier-ignore-end -->
@@ -260,6 +252,9 @@
       </div>
     </div>
 
+    <!-- 3d Model Robot -->
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.48/build/spline-viewer.js"></script>
+<spline-viewer style="background-image: url('gradient.png')"class="model3d" url="https://prod.spline.design/T7u4nsxVOmAtSMCs/scene.splinecode"></spline-viewer>
     <script src="script.js"></script>
   </body>
 </html>

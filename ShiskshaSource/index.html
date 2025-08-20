@@ -5,68 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title  link="index.html">ShikshaSource - College Projects</title>
     <link href="output.css" rel="stylesheet" />
+    <link href="./CSS/styles.css" rel="stylesheet"
     <!-- Additional custom styles -->
-    <style>
-      .service-card {
-        transition: all 0.3s ease;
-      }
-      .service-card:hover {
-        transform: translateY(-5px);
-      }
-      .lang-icon {
-        transition: all 0.3s ease;
-      }
-      .lang-icon:hover {
-        transform: scale(1.1);
-      }
-      
-
-/* Dropdown button on hover & focus */
-.dropbtn:hover, .dropbtn:focus {
-  background-color: #444444;
-}
-
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #252525;
-  min-width: 150px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  border-radius:10px;
-  z-index: 1;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-  color: rgb(255, 255, 255);
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #878787;}
-
-/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-.show {display:block;}
-body.light-theme {
-    background-color: white;
-    color: black;
-  }
-
-  body.dark-theme {
-    background-color: #1a202c;
-    color: white;
-  }
-
-    </style>
+   
   </head>
   <body class=" text-white pl-4" class="transition-colors duration-300 bg-white text-black" id="page">
     <!-- Navigation -->
@@ -90,8 +31,8 @@ body.light-theme {
         
 
 
-<div class="px-4 py-2 rounded-full bg-gray-800 hover:bg-gray-700 text-white inline-block">
-  <button onclick="myFunction()" class="dropbtn">Select Projects🔽 </button>
+<div class="px-4 py-3 rounded-full bg-gray-800 hover:bg-gray-700 text-white inline-block">
+  <button onclick="myFunction()" class="dropbtn">Select Projects 🔽 </button>
   <div id="myDropdown" class="dropdown-content">
     <a href="JavascriptProjects.html">Javascript Projects</a>
     <a href="PythonProjects.html">Python Projects</a>
@@ -190,7 +131,7 @@ body.light-theme {
             alt="JavaScript"
             class="h-16 w-16"
           />
-          <p class="text-center mt-2">JAVASCRIPT</p>
+          <p class="text-center mt-2 ">JAVASCRIPT</p>
         </div>
         <div class="lang-icon">
           <img
@@ -233,19 +174,23 @@ body.light-theme {
       <h2 class="text-2xl font-bold text-center mb-12">Why Choose US?</h2>
 
       <!-- On Time Delivery -->
-      <div
-        class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-20 pb-40 items-center"
-      >
-        <div>
-          <img
-            src="Images/On time Project.png"
-            alt="On Time Delivery"
-            class="rounded-lg w-full h-auto"
-            width="600"
-            height="400"
-          />
-        </div>
-        <div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-20 pb-40 items-center">
+  <div>
+    <img
+      class="rounded-lg w-5 h-6 border-red-800  object-cover"
+      src="Images/On time Project.png"
+      alt="On Time Delivery"
+    />
+  </div>
+  <div>
+    <h2 class="text-2xl font-bold">On Time Delivery</h2>
+    <p class="text-gray-600 mt-2">
+      We deliver projects promptly without compromising quality.
+    </p>
+  </div>
+</div>
+
+        <!-- <div>
           <h3 class="text-xl font-bold mb-2">On Time Delievery</h3>
           <p class="text-gray-400 text-justify">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -254,7 +199,7 @@ body.light-theme {
             aliquip ex ea commodo consequat.
           </p>
         </div>
-      </div>
+      </div> -->
 
       <!-- Error Free Code -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
@@ -293,7 +238,7 @@ body.light-theme {
           </div>
           <div class="flex justify-center">
             <button
-              class="px-4 py-2 bg-blue-400 hover:bg-blue-700 rounded-full"
+              class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-full"
             >
               View Project
             </button>
