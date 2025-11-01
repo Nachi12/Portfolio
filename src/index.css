@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+/* Robot animation */
+#robot {
+  transition: all 0.7s ease-in-out;
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  width: 150px;
+  height: 150px;
+}
+
+
+.hide-robot {
+  opacity: 0;
+  transform: translateY(100px);
+  z-index: -1;
+  pointer-events: none;
+}
