@@ -1,16 +1,137 @@
-# React + Vite
+# 💻 VS Code–Themed Portfolio — Nachiketa NR
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A **VS Code–inspired interactive portfolio** built with **React, Redux, and Tailwind CSS**, designed to showcase projects, certificates, and resume previews in a clean developer-centric UI.
 
-Currently, two official plugins are available:
+This portfolio is not just a static site — it behaves like a code editor with tabs, previews, and dynamic interactions.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Live Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* 🧠 **VS Code–style tab system**
+* 🤖 **Animated Robot Assistant**
 
-## Expanding the ESLint configuration
+  * Hides automatically when previews open
+  * Reappears when switching tabs
+* 📂 **Project, Certificate & Resume Previews**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+  * Embedded iframe previews
+  * Scroll-to-preview alerts for better UX
+* 🧩 **Redux-powered state management**
+* 🎨 **Dark editor theme with Tailwind CSS**
+* 📱 **Responsive & scrollable tab layout**
+
+---
+
+## 🧑‍💻 Tech Stack
+
+**Frontend**
+
+* React.js
+* Redux Toolkit
+* Tailwind CSS
+
+**State Management**
+
+* Redux (Tabs & Preview handling)
+
+**UI / UX**
+
+* VS Code–inspired editor layout
+* Animated transitions
+* Embedded live previews
+
+---
+## 🧭 Tabs Available
+
+| Tab               | Description                       |
+| ----------------- | --------------------------------- |
+| `index.html`      | Intro & personal branding         |
+| `about.html`      | Skills, role, and tech stack      |
+| `projects.js`     | Live project previews             |
+| `certificates.js` | Google Drive certificate previews |
+| `resume.js`       | Embedded resume PDF               |
+| `contact.js`      | Contact & social links            |
+
+---
+
+## 🔍 Preview System (Key Feature)
+
+Each preview:
+
+* Opens inside the same page
+* Automatically hides the robot animation
+* Uses Redux to control visibility and URL
+* Scrolls user attention to preview section
+
+Supported previews:
+
+* 🌐 Live Projects
+* 🎖️ Certificates (Google Drive)
+* 📄 Resume (PDF)
+
+---
+
+## 🤖 Robot Interaction Logic
+
+* **Hidden** when:
+
+  * Project preview opens
+  * Certificate preview opens
+  * Resume preview opens
+* **Shown again** when:
+
+  * Switching tabs
+
+This keeps the focus on the preview content.
+
+---
+
+## 🧠 Redux Slices Used
+
+### `tabSlice`
+
+* Manages active editor tab
+
+### `previewSlice`
+
+* Controls:
+
+  * Project preview visibility
+  * Certificate preview visibility
+  * Resume preview visibility
+  * Preview URLs
+
+---
+
+## 📸 UI Inspiration
+
+* Visual Studio Code
+* Developer-first interfaces
+* Code-as-content presentation
+
+---
+
+## 📬 Contact
+
+* **Email:** `nrnachi34@gmail.com`
+* **GitHub:** [github.com/Nachi12](https://github.com/Nachi12)
+* **LinkedIn:** linkedin.com/in/nachiketa
+* **Behance:** [https://www.behance.net/nachiappu](https://www.behance.net/nachiappu)
+
+---
+
+## 📌 Future Enhancements
+
+* Syntax highlighting per tab
+* File tree explorer
+* Terminal-style command input
+* Mobile-first optimizations
+* Dark/light theme toggle
+
+---
+
+## ⭐ Why This Portfolio Stands Out
+
+> This portfolio doesn’t *describe* development skills —
+> **it demonstrates them through interaction.**
