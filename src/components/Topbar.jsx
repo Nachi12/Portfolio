@@ -54,7 +54,7 @@
 //           ].map((tab) => (
 //             <div
 //               key={tab.id}
-//               className={`px-4 py-2 rounded-t-lg cursor-pointer transition-all duration-300 
+//               className={`px-4 py-2 rounded-t-lg cursor-pointer transition-all duration-300
 //               ${
 //                 activeTab === tab.id
 //                   ? "bg-gray-800 text-green-400 border-b-2 border-green-400"
@@ -93,7 +93,7 @@
 //           <p>
 //             <span className="text-yellow-400">🔍 Specialized in:</span>
 //             <span className="text-purple-300"> MERN STACK DEVELOPMENT</span> |
-//             <span className="text-blue-300 ml-2">UX | UI Designing.</span> 
+//             <span className="text-blue-300 ml-2">UX | UI Designing.</span>
 //           </p>
 //           <p className="text-green-400">&lt;/h2&gt;</p>
 //         </div>
@@ -205,7 +205,6 @@
 //           <br />
 //            &nbsp;&nbsp;{"},"}
 
-
 // {/* Third Project */}
 // <br /><br />
 // &nbsp;&nbsp;{"{"}
@@ -236,9 +235,6 @@
 //           </button>
 //  &nbsp;&nbsp;{"}"}
 //           <br />
-
-
-
 
 //           {projectPreview.isVisible && (
 //             <div className="mt-6">
@@ -359,7 +355,6 @@
 //           )}
 //         </div> */}
 
-
 // <div
 //   className={`code ${activeTab === "resume" ? "block" : "hidden"} font-mono`}
 //   id="code-resume"
@@ -425,10 +420,6 @@
 
 // export default Topbar;
 
-
-
-
-
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setActiveTab } from "../store/slices/tabSlice";
@@ -443,37 +434,36 @@ import {
 
 const Topbar = () => {
   const dispatch = useDispatch();
-  const activeTab = useSelector((state) => state.tab. activeTab);
+  const activeTab = useSelector((state) => state.tab.activeTab);
   const projectPreview = useSelector(selectProjectPreview);
   const certificatePreview = useSelector(selectCertificatePreview);
   const resumePreview = useSelector(selectResumePreview);
 
-const handleTabClick = (tabId) => {
-  dispatch(setActiveTab(tabId));
-  handleShowRobot(); // 👈 robot comes back
-};
-
+  const handleTabClick = (tabId) => {
+    dispatch(setActiveTab(tabId));
+    handleShowRobot(); // 👈 robot comes back
+  };
 
   // 🔹 Hide Robot when any preview opens
   // 🔹 Hide Robot Function
-const handleHideRobot = () => {
-  const robot = document.getElementById("robot");
-  if (robot) {
-    robot.style.zIndex = "-1";
-    robot.style.opacity = "0";
-    robot.style.transform = "scale(0.8) translateY(80px)";
-  }
-};
+  const handleHideRobot = () => {
+    const robot = document.getElementById("robot");
+    if (robot) {
+      robot.style.zIndex = "-1";
+      robot.style.opacity = "0";
+      robot.style.transform = "scale(0.8) translateY(80px)";
+    }
+  };
 
-// 🔹 Show Robot Again (when switching tabs)
-const handleShowRobot = () => {
-  const robot = document.getElementById("robot");
-  if (robot) {
-    robot.style.zIndex = "50";
-    robot.style.opacity = "1";
-    robot.style.transform = "scale(1) translateY(0)";
-  }
-};
+  // 🔹 Show Robot Again (when switching tabs)
+  const handleShowRobot = () => {
+    const robot = document.getElementById("robot");
+    if (robot) {
+      robot.style.zIndex = "50";
+      robot.style.opacity = "1";
+      robot.style.transform = "scale(1) translateY(0)";
+    }
+  };
 
   // 🔹 Project Preview
   const handleProjectPreview = (url) => {
@@ -537,7 +527,7 @@ const handleShowRobot = () => {
           <p className="text-green-400">&lt;h1&gt;</p>
           <p>Welcome to MY VS-Code Theme Based Portfolio.</p>
           <p className="text-blue-400 text-lg font-semibold">
-            I&apos;am NACHIKETA NR — I don&apos;t just build, I elevate.
+            I&apos;am NACHIKETA NR — I don&apos;t just build Websites, I elevate them.
           </p>
           <p className="text-green-400">&lt;/h1&gt;</p>
 
@@ -550,7 +540,7 @@ const handleShowRobot = () => {
 
           <p className="text-green-400">&lt;h2&gt;</p>
           <p>
-            <span className="text-yellow-400">🔍 Specialized in:</span>
+            <span className="text-yellow-400">Specialized in:</span>
             <span className="text-purple-300"> MERN STACK DEVELOPMENT</span> |
             <span className="text-blue-300 ml-2">UX | UI Designing.</span>
           </p>
@@ -592,8 +582,6 @@ const handleShowRobot = () => {
           "Netlify", "ChatGPT"],
           <br />
           {"}"}
-          <br />
-          {"}"}
         </div>
 
         {/* Projects Tab */}
@@ -608,12 +596,24 @@ const handleShowRobot = () => {
           <br />
           &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-blue-400">Id:</span>1,
           <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-blue-400">Title:</span>{" "}
+          &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-blue-400">
+            Title:
+          </span>{" "}
           "Connect",
           <br />
           &nbsp;&nbsp;&nbsp;&nbsp;
           <span className="text-blue-400">Frontend-Tech-Used:</span>{" "}
           "React/JS/Tailwind CSS",
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;
+           <span className="text-blue-400">Backend-Tech-Used:</span>{" "}
+          "Node.js, Express.js, MongoDB, API",
+          <br />
+             &nbsp;&nbsp;&nbsp;&nbsp;
+           <span className="text-blue-400">Project Description:</span>{" "}
+          "Developed the ",
+          <br />
+            &nbsp;&nbsp;{"},"}
           <br />
           <button
             onClick={() =>
@@ -624,9 +624,81 @@ const handleShowRobot = () => {
             Preview
           </button>
           <br />
-          &nbsp;&nbsp;{"},"}
+        
+
+        
+            {/* Second Project */}
+            <br />
+            &nbsp;&nbsp;{"{"}
+             <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-blue-400">Id:</span>2,
+         
+            <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-blue-400">
+            Title:
+          </span>{" "}
+          "YouTube-Subscriber Fetching through API (Backend)",
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <span className="text-blue-400">Frontend-Tech-Used:</span>{" "}
+          "React/JS/Tailwind CSS",
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;
+           <span className="text-blue-400">Backend-Tech-Used:</span>{" "}
+          "Node.js, Express.js, MongoDB, API",
+          <br />
+             &nbsp;&nbsp;&nbsp;&nbsp;
+           <span className="text-blue-400">Project Description:</span>{" "}
+          "Developed the ",
+          <br />
+            &nbsp;&nbsp;{"},"}
+          <br />
+          <button
+            onClick={() =>
+              handleProjectPreview("https://backend-youtube-subscribers-5fl7.onrender.com")
+            }
+            className="mt-3 px-3 py-1 bg-green-600 text-white rounded-md hover:bg-green-700 transition"
+          >
+            Preview
+          </button>
           <br />
 
+
+
+            {/* Third Project */}
+            <br />
+            &nbsp;&nbsp;{"{"}
+            <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-blue-400">Id:</span>3,
+           <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-blue-400">
+            Title:
+          </span>{" "}
+          "Cryptocurrency Dashboard (Frontend)",
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <span className="text-blue-400">Frontend-Tech-Used:</span>{" "}
+          "React/JS/Tailwind CSS",
+          <br />
+          &nbsp;&nbsp;&nbsp;&nbsp;
+           <span className="text-blue-400">Backend-Tech-Used:</span>{" "}
+          "Node.js, Express.js, MongoDB, API",
+          <br />
+             &nbsp;&nbsp;&nbsp;&nbsp;
+           <span className="text-blue-400">Project Description:</span>{" "}
+          "Developed the ",
+          <br />
+            &nbsp;&nbsp;{"},"}
+          <br />
+          <button
+            onClick={() =>
+              handleProjectPreview("https://connect-frontend1.netlify.app/")
+            }
+            className="mt-3 px-3 py-1 bg-green-600 text-white rounded-md hover:bg-green-700 transition"
+          >
+            Preview
+          </button>
+          <br />
           {projectPreview.isVisible && (
             <div className="mt-6">
               <h3 className="text-green-400 font-bold mb-2">
@@ -641,8 +713,7 @@ const handleShowRobot = () => {
               ></iframe>
             </div>
           )}
-        </div>
-
+        </div>                       
         {/* Certificates Tab */}
         <div
           className={`code ${
@@ -654,12 +725,12 @@ const handleShowRobot = () => {
           &nbsp;&nbsp;{"{"}
           <br />
           &nbsp;&nbsp;&nbsp;&nbsp;
-          <span className="text-blue-400">Company:</span> "Dave Brothers",
+          <span className="text-blue-400">Course Certificates:</span> "Drive Link",
           <br />
           <button
             onClick={() =>
               handleCertificatePreview(
-                "Certificate/_Experience Letter of Nachiketa.pdf"
+                "https://drive.google.com/drive/folders/1XNbY_0b4zdaBay1WxuSQpTEACe-diFVw?usp=sharing"
               )
             }
             className="mt-2 px-3 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
@@ -670,7 +741,6 @@ const handleShowRobot = () => {
           &nbsp;&nbsp;{"}"},
           <br />
           ];
-
           {certificatePreview.isVisible && (
             <div className="mt-6">
               <h3 className="text-green-400 font-bold mb-2">
@@ -694,21 +764,22 @@ const handleShowRobot = () => {
           } font-mono`}
           id="code-resume"
         >
+          <h1>Click Preview Button To See the Resume</h1>
           <button
             onClick={() =>
               handleResumePreview(
-                "src/Documents/NACHIKETA_NR_MERN_STACK_DEVELOPER.pdf"
+                "Resume/NACHIKETA_NR_MERN_STACK_DEVELOPER (1).pdf"
               )
             }
             className="px-6 py-2 m-14 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition"
-          >
+            >
             Preview Resume
           </button>
 
           {resumePreview.isVisible && (
             <div className="mt-6">
               <h3 className="text-green-400 font-bold mb-2">
-                📝 Live Resume Preview
+             
               </h3>
               <iframe
                 src={resumePreview.url}
@@ -750,5 +821,3 @@ const handleShowRobot = () => {
 };
 
 export default Topbar;
-
-
