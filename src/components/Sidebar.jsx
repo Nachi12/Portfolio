@@ -29,11 +29,11 @@ const Sidebar = () => {
             src: "https://img.icons8.com/?size=100&id=o5TPK01kK9ba&format=png&color=FFFFFF",
             title: "Projects",
           },
-          {
-            id: "certificates",
-            src: "https://img.icons8.com/?size=100&id=dJCeFvDDx12A&format=png&color=FFFFFF",
-            title: "Certificates",
-          },
+          // {
+          //   id: "certificates",
+          //   src: "https://img.icons8.com/?size=100&id=dJCeFvDDx12A&format=png&color=FFFFFF",
+          //   title: "Certificates",
+          // },
           {
             id: "resume",
             src: "https://img.icons8.com/?size=100&id=SGNSoxEHzdUB&format=png&color=FFFFFF",

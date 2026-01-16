@@ -9,7 +9,7 @@ const Explorer = () => {
       <div class="file">index.html</div>
       <div class="file">about.html</div>
       <div class="file">projects.js</div>
-      <div class="file">certificates.js</div>
+      {/* <div class="file">certificates.js</div> */}
       <div class="file">resume.js</div>
       <div class="file last">contact.js</div>
     </div>
