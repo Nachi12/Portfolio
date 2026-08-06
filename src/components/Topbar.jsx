@@ -9,17 +9,17 @@ import {
 import resumeUrl from '../../Resume/NACHIKETA_NR_MERN_STACK_DEVELOPER (1).pdf?url'
 
 const tabs = [
-  { id: 'home', label: 'index.html' },
-  { id: 'about', label: 'about.jsx' },
-  { id: 'projects', label: 'projects.js' },
-  { id: 'resume', label: 'resume.pdf' },
-  { id: 'contact', label: 'contact.json' },
+  { id: 'home', label: 'index.html', icon: '🌐' },
+  { id: 'about', label: 'about.jsx', icon: '⚛️' },
+  { id: 'projects', label: 'projects.js', icon: '⚡' },
+  { id: 'resume', label: 'resume.pdf', icon: '📄' },
+  { id: 'contact', label: 'contact.json', icon: '📋' },
 ]
 
 const highlights = [
-  { value: 'BCA', label: 'CGPA 8.3 / 10.0' },
-  { value: 'SaaS', label: 'auth, analytics and APIs' },
-  { value: 'AI', label: 'assisted development workflow' },
+  { value: '8.3 CGPA', label: 'Bachelor of Computer Applications' },
+  { value: 'Full Stack', label: 'React, Node, Mongo & REST APIs' },
+  { value: 'AI Workflow', label: 'Prompt engineering & AI debugging' },
 ]
 
 const skills = [
@@ -106,19 +106,43 @@ const contacts = [
   { label: 'Location', value: 'Bangalore, Karnataka', href: 'https://www.google.com/maps/place/Bengaluru,+Karnataka' },
 ]
 
-const SectionShell = ({ eyebrow, title, children }) => (
-  <section className="min-h-[620px] rounded-[8px] border border-white/10 bg-slate-950/80 shadow-2xl shadow-black/30 backdrop-blur">
-    <div className="flex min-h-[44px] items-center justify-between border-b border-white/10 bg-slate-900/90 px-4 py-2">
-      <div className="flex items-center gap-2">
-        <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
-        <span className="h-3 w-3 rounded-full bg-[#ffbd2e]" />
-        <span className="h-3 w-3 rounded-full bg-[#28c840]" />
+const SectionShell = ({ eyebrow, title, activeTabLabel, children }) => (
+  <section className="min-h-[620px] overflow-hidden rounded-2xl border border-slate-800/80 bg-[#0f172a]/70 shadow-2xl shadow-black/50 backdrop-blur-md">
+    {/* Studio Window Header Bar */}
+    <div className="flex min-h-[46px] items-center justify-between border-b border-slate-800/80 bg-[#0b0f17]/90 px-4 py-2.5">
+      <div className="flex items-center gap-3">
+        <div className="flex items-center gap-1.5">
+          <span className="h-3 w-3 rounded-full bg-[#ff5f57]/80 hover:bg-[#ff5f57]" />
+          <span className="h-3 w-3 rounded-full bg-[#ffbd2e]/80 hover:bg-[#ffbd2e]" />
+          <span className="h-3 w-3 rounded-full bg-[#28c840]/80 hover:bg-[#28c840]" />
+        </div>
+        <div className="hidden items-center gap-1.5 text-xs font-mono text-slate-500 sm:flex">
+          <span className="text-slate-600">nachiketa-nr</span>
+          <span>/</span>
+          <span className="text-slate-400">portfolio</span>
+          <span>/</span>
+          <span className="text-indigo-400 font-semibold">{activeTabLabel || 'index.html'}</span>
+        </div>
       </div>
-      <span className="hidden text-xs text-slate-400 sm:inline">Nachiketa NR - Full Stack Developer</span>
+
+      {/* Available for work pulse badge */}
+      <div className="flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-400">
+        <span className="relative flex h-2 w-2">
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+          <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+        </span>
+        <span className="font-mono text-[11px]">Available for Opportunities</span>
+      </div>
     </div>
-    <div className="p-4 sm:p-6 lg:p-8">
-      <p className="text-xs font-semibold uppercase tracking-[0.24em] text-cyan-300">{eyebrow}</p>
-      <h1 className="mt-3 max-w-4xl text-3xl font-semibold leading-tight text-white sm:text-4xl lg:text-5xl">
+
+    <div className="p-5 sm:p-8 lg:p-10">
+      {eyebrow && (
+        <div className="inline-flex items-center gap-2 rounded-full border border-indigo-500/20 bg-indigo-500/10 px-3.5 py-1 text-xs font-mono font-medium text-indigo-300">
+          <span className="h-1.5 w-1.5 rounded-full bg-indigo-400" />
+          <span>{eyebrow}</span>
+        </div>
+      )}
+      <h1 className="mt-4 max-w-4xl font-display text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl">
         {title}
       </h1>
       {children}
@@ -126,17 +150,21 @@ const SectionShell = ({ eyebrow, title, children }) => (
   </section>
 )
 
-const TabButton = ({ id, label, activeTab, onClick }) => (
+const TabButton = ({ id, label, icon, activeTab, onClick }) => (
   <button
     type="button"
     onClick={() => onClick(id)}
-    className={`shrink-0 border-b-2 px-4 py-3 text-sm font-medium transition ${
+    className={`group relative shrink-0 flex items-center gap-2 px-4 py-3 text-xs font-mono font-medium transition-all ${
       activeTab === id
-        ? 'border-cyan-300 bg-slate-800 text-white'
-        : 'border-transparent text-slate-400 hover:bg-slate-800/70 hover:text-slate-100'
+        ? 'bg-slate-900/90 text-white'
+        : 'text-slate-400 hover:bg-slate-900/50 hover:text-slate-200'
     }`}
   >
-    {label}
+    <span className="text-sm">{icon}</span>
+    <span>{label}</span>
+    {activeTab === id && (
+      <span className="absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-400 shadow-[0_0_8px_rgba(99,102,241,0.8)]" />
+    )}
   </button>
 )
 
@@ -158,10 +186,13 @@ const Topbar = () => {
     dispatch(showResumePreview(resumeUrl))
   }
 
+  const activeTabObj = tabs.find((t) => t.id === activeTab)
+
   return (
     <div className="relative z-10 w-full">
-      <div className="mb-4 overflow-x-auto rounded-[8px] border border-white/10 bg-slate-950/80">
-        <nav className="flex min-w-max" aria-label="Portfolio sections">
+      {/* Tab Navigation Header */}
+      <div className="mb-4 overflow-x-auto rounded-xl border border-slate-800/80 bg-[#0b0f17]/90 backdrop-blur-md">
+        <nav className="flex min-w-max border-b border-slate-800/50" aria-label="Portfolio sections">
           {tabs.map((tab) => (
             <TabButton key={tab.id} {...tab} activeTab={activeTab} onClick={handleTabClick} />
           ))}
@@ -169,67 +200,83 @@ const Topbar = () => {
       </div>
 
       {activeTab === 'home' && (
-        <SectionShell eyebrow="full stack developer | react.js | node.js | typescript" title="Building SaaS applications with clean interfaces, secure APIs, and AI-assisted delivery.">
-          <p className="mt-5 max-w-3xl text-base leading-8 text-slate-300 sm:text-lg">
-            I am Nachiketa NR, a Full Stack Developer from Bangalore with hands-on experience
+        <SectionShell
+          activeTabLabel={activeTabObj?.label}
+          eyebrow="Full Stack Developer • React.js • Node.js • TypeScript"
+          title="Building modern SaaS applications with clean interfaces, robust APIs, and AI-assisted velocity."
+        >
+          <p className="mt-5 max-w-3xl text-base leading-relaxed text-slate-300 sm:text-lg">
+            I am <strong className="text-white font-semibold">Nachiketa NR</strong>, a Full Stack Developer from Bangalore with hands-on experience
             building SaaS applications using React.js, Node.js, Express.js, MongoDB, and TypeScript.
-            I have worked on authentication systems, analytics dashboards, REST APIs, and multi-user
-            workflows with end-to-end ownership from implementation to deployment.
+            I take end-to-end ownership of product engineering — from database schema design and secure REST APIs
+            to polished user interfaces.
           </p>
-          <div className="mt-8 grid gap-3 sm:grid-cols-3">
+          <div className="mt-8 grid gap-4 sm:grid-cols-3">
             {highlights.map((item) => (
-              <div key={item.label} className="rounded-[8px] border border-white/10 bg-white/[0.04] p-4">
-                <p className="text-2xl font-semibold text-cyan-200">{item.value}</p>
-                <p className="mt-1 text-sm text-slate-400">{item.label}</p>
+              <div key={item.label} className="group relative overflow-hidden rounded-xl border border-slate-800/80 bg-slate-900/40 p-5 transition duration-300 hover:border-slate-700 hover:bg-slate-900/70">
+                <p className="font-display text-2xl font-bold text-white tracking-tight">{item.value}</p>
+                <p className="mt-2 text-xs font-medium text-slate-400 font-sans">{item.label}</p>
               </div>
             ))}
           </div>
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-8 flex flex-wrap gap-4">
             <button
               type="button"
               onClick={() => handleTabClick('projects')}
-              className="rounded-[8px] bg-cyan-300 px-5 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-cyan-950/30 transition hover:bg-cyan-200"
+              className="group inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-indigo-500 via-indigo-600 to-violet-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/25 transition duration-200 hover:from-indigo-400 hover:to-violet-500 hover:shadow-indigo-500/40 active:scale-95"
             >
-              View Projects
+              <span>Explore Work & Projects</span>
+              <svg className="h-4 w-4 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
             </button>
             <button
               type="button"
               onClick={() => handleTabClick('resume')}
-              className="rounded-[8px] border border-white/15 px-5 py-3 text-sm font-semibold text-white transition hover:border-cyan-200 hover:text-cyan-100"
+              className="inline-flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-900/60 px-6 py-3.5 text-sm font-semibold text-slate-200 shadow-sm transition duration-200 hover:border-slate-600 hover:bg-slate-800 hover:text-white active:scale-95"
             >
-              Open Resume
+              <svg className="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              <span>View Resume</span>
             </button>
           </div>
         </SectionShell>
       )}
 
       {activeTab === 'about' && (
-        <SectionShell eyebrow="about me" title="Full-stack ownership with UI polish, backend structure, and practical debugging.">
-          <div className="mt-6 grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+        <SectionShell
+          activeTabLabel={activeTabObj?.label}
+          eyebrow="About Me & Tech Skills"
+          title="Full-stack ownership with frontend polish, backend architecture, and rapid AI-assisted development."
+        >
+          <div className="mt-6 grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
             <div className="space-y-4 text-slate-300">
-              <p className="leading-8">
+              <p className="leading-relaxed">
                 I build complete web products across React interfaces, Node.js APIs, MongoDB schemas,
-                authentication flows, and deployment. My strongest work sits in SaaS-style features
-                where clean UI, protected routes, analytics, and multi-user workflows need to work together.
+                authentication flows, and cloud deployments. My strongest focus is on SaaS-style applications
+                where clean UI, protected routes, data dashboards, and multi-user workflows come together.
               </p>
-              <p className="leading-8">
-                I am comfortable using AI-assisted development tools such as ChatGPT, Cursor AI,
-                and GitHub Copilot to accelerate development while still reviewing, debugging, and
-                maintaining code quality.
+              <p className="leading-relaxed">
+                I actively leverage modern AI-assisted software tools like Cursor AI, ChatGPT, and GitHub Copilot
+                to accelerate delivery while ensuring thorough manual debugging, structural clarity, and code maintainability.
               </p>
-              <div className="rounded-[8px] border border-white/10 bg-white/[0.04] p-4">
-                <p className="text-sm font-semibold text-cyan-200">Education</p>
-                <p className="mt-2 text-sm text-white">Bachelor of Computer Applications (BCA)</p>
-                <p className="mt-1 text-sm text-slate-400">Vijayanagara College, Karnataka | Oct 2021 - Dec 2024 | CGPA: 8.3 / 10.0</p>
+              <div className="rounded-xl border border-slate-800/80 bg-slate-900/40 p-5">
+                <p className="text-xs font-mono font-semibold text-indigo-400 uppercase tracking-wider">Education</p>
+                <p className="mt-2 font-display text-base font-semibold text-white">Bachelor of Computer Applications (BCA)</p>
+                <p className="mt-1 text-xs text-slate-400 font-sans">Vijayanagara College, Karnataka | Oct 2021 - Dec 2024 | CGPA: 8.3 / 10.0</p>
               </div>
             </div>
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
               {skills.map(([group, ...items]) => (
-                <div key={group} className="rounded-[8px] border border-white/10 bg-white/[0.04] p-4">
-                  <p className="text-sm font-semibold text-cyan-200">{group}</p>
+                <div key={group} className="rounded-xl border border-slate-800/80 bg-slate-900/40 p-5 transition duration-200 hover:border-slate-700">
+                  <div className="flex items-center gap-2 text-xs font-mono font-semibold text-indigo-400 uppercase tracking-wider">
+                    <span className="h-1.5 w-1.5 rounded-full bg-indigo-400" />
+                    <span>{group}</span>
+                  </div>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {items.map((item) => (
-                      <span key={item} className="rounded-full border border-white/10 bg-slate-900 px-3 py-1 text-xs text-slate-300">
+                      <span key={item} className="rounded-lg border border-slate-800 bg-slate-900/80 px-3 py-1 text-xs font-mono text-slate-300 shadow-sm">
                         {item}
                       </span>
                     ))}
@@ -242,36 +289,48 @@ const Topbar = () => {
       )}
 
       {activeTab === 'projects' && (
-        <SectionShell eyebrow="selected work" title="Projects that show full-stack thinking and product polish.">
-          <div className="mt-7 grid gap-5">
+        <SectionShell
+          activeTabLabel={activeTabObj?.label}
+          eyebrow="Selected Work"
+          title="Featured full-stack projects showcasing real-world application architecture."
+        >
+          <div className="mt-7 grid gap-6">
             {projects.map((project) => (
-              <article key={project.name} className="rounded-[8px] border border-white/10 bg-white/[0.04] p-5">
+              <article key={project.name} className="group relative overflow-hidden rounded-xl border border-slate-800/80 bg-slate-900/40 p-6 transition duration-300 hover:border-slate-700 hover:bg-slate-900/70">
                 <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                   <div>
-                    <p className="text-xl font-semibold text-white">{project.name}</p>
-                    <p className="mt-1 text-sm text-cyan-200">{project.type}</p>
+                    <div className="flex items-center gap-3">
+                      <h3 className="font-display text-xl font-bold text-white tracking-tight">{project.name}</h3>
+                      <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2.5 py-0.5 text-[11px] font-mono font-medium text-indigo-300">
+                        {project.type}
+                      </span>
+                    </div>
                   </div>
                   {project.url && (
                     <button
                       type="button"
                       onClick={() => handleProjectPreview(project.url)}
-                      className="w-full rounded-[8px] bg-emerald-300 px-4 py-2 text-sm font-semibold text-emerald-950 transition hover:bg-emerald-200 sm:w-auto"
+                      className="inline-flex items-center gap-1.5 self-start rounded-lg bg-emerald-500/15 border border-emerald-500/30 px-3.5 py-2 text-xs font-semibold text-emerald-300 transition hover:bg-emerald-500/25 hover:text-emerald-200"
                     >
-                      Preview
+                      <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                      </svg>
+                      <span>Live Preview</span>
                     </button>
                   )}
                 </div>
-                <ul className="mt-4 space-y-2 text-sm leading-6 text-slate-300">
+                <ul className="mt-4 space-y-2 text-sm leading-relaxed text-slate-300">
                   {project.points.map((point) => (
-                    <li key={point} className="flex gap-2">
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-300" />
+                    <li key={point} className="flex gap-2.5">
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400" />
                       <span>{point}</span>
                     </li>
                   ))}
                 </ul>
-                <div className="mt-4 flex flex-wrap gap-2">
+                <div className="mt-5 flex flex-wrap gap-2">
                   {project.stack.map((item) => (
-                    <span key={item} className="rounded-full bg-slate-900 px-3 py-1 text-xs text-slate-300">
+                    <span key={item} className="rounded-lg border border-slate-800 bg-slate-950 px-3 py-1 text-xs font-mono text-slate-300">
                       {item}
                     </span>
                   ))}
@@ -280,58 +339,72 @@ const Topbar = () => {
             ))}
           </div>
           {projectPreview.isVisible && (
-            <div className="mt-6 overflow-hidden rounded-[8px] border border-white/10 bg-slate-900">
-              <div className="border-b border-white/10 px-4 py-3 text-sm text-slate-300">Live preview</div>
-              <iframe src={projectPreview.url} title="Project Preview" className="h-[520px] w-full bg-white" />
+            <div className="mt-6 overflow-hidden rounded-xl border border-slate-800 bg-slate-950 shadow-2xl">
+              <div className="border-b border-slate-800 bg-slate-900/90 px-4 py-3 text-xs font-mono text-slate-300 flex items-center justify-between">
+                <span>Interactive Live Preview</span>
+                <a href={projectPreview.url} target="_blank" rel="noreferrer" className="text-indigo-400 hover:underline">Open in new tab ↗</a>
+              </div>
+              <iframe src={projectPreview.url} title="Project Preview" className="h-[540px] w-full bg-white" />
             </div>
           )}
         </SectionShell>
       )}
 
       {activeTab === 'resume' && (
-        <SectionShell eyebrow="resume" title="Experience, education, certification, and resume PDF in one place.">
-          <div className="mt-6 flex flex-wrap gap-3">
+        <SectionShell
+          activeTabLabel={activeTabObj?.label}
+          eyebrow="Resume & Experience"
+          title="Professional history, certifications, and downloadable resume."
+        >
+          <div className="mt-6 flex flex-wrap gap-4">
             <button
               type="button"
               onClick={handleResumePreview}
-              className="rounded-[8px] bg-cyan-300 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-200"
+              className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/25 transition duration-200 hover:from-indigo-400 hover:to-violet-500 active:scale-95"
             >
-              Preview Resume
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+              </svg>
+              <span>Preview Resume PDF</span>
             </button>
             <a
               href={resumeUrl}
               download
-              className="rounded-[8px] border border-white/15 px-5 py-3 text-sm font-semibold text-white transition hover:border-cyan-200 hover:text-cyan-100"
+              className="inline-flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-900/60 px-6 py-3.5 text-sm font-semibold text-slate-200 shadow-sm transition duration-200 hover:border-slate-600 hover:bg-slate-800 hover:text-white active:scale-95"
             >
-              Download PDF
+              <svg className="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+              <span>Download PDF</span>
             </a>
           </div>
-          <div className="mt-7 grid gap-5">
+          <div className="mt-8 grid gap-5">
             {experience.map((item) => (
-              <article key={`${item.role}-${item.company}`} className="rounded-[8px] border border-white/10 bg-white/[0.04] p-5">
+              <article key={`${item.role}-${item.company}`} className="rounded-xl border border-slate-800/80 bg-slate-900/40 p-6 transition duration-200 hover:border-slate-700">
                 <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
                   <div>
-                    <p className="text-lg font-semibold text-white">{item.role}</p>
-                    <p className="text-sm text-cyan-200">{item.company}</p>
+                    <h3 className="font-display text-lg font-bold text-white">{item.role}</h3>
+                    <p className="text-sm font-medium text-indigo-400">{item.company}</p>
                   </div>
-                  <p className="text-sm text-slate-400">{item.period}</p>
+                  <p className="text-xs font-mono text-slate-400 bg-slate-950 px-3 py-1 rounded-full border border-slate-800 self-start">{item.period}</p>
                 </div>
-                <ul className="mt-4 space-y-2 text-sm leading-6 text-slate-300">
+                <ul className="mt-4 space-y-2 text-sm leading-relaxed text-slate-300">
                   {item.points.map((point) => (
-                    <li key={point} className="flex gap-2">
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-300" />
+                    <li key={point} className="flex gap-2.5">
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-400" />
                       <span>{point}</span>
                     </li>
                   ))}
                 </ul>
               </article>
             ))}
-            <article className="rounded-[8px] border border-white/10 bg-white/[0.04] p-5">
-              <p className="text-lg font-semibold text-white">Professional Fellowship in Software Engineering with AI and DevOps</p>
-              <p className="mt-1 text-sm text-cyan-200">AlmaBetter | Expected Completion: 2026</p>
+            <article className="rounded-xl border border-slate-800/80 bg-slate-900/40 p-6">
+              <h3 className="font-display text-lg font-bold text-white">Professional Fellowship in Software Engineering with AI and DevOps</h3>
+              <p className="mt-1 text-sm font-medium text-indigo-400">AlmaBetter | Expected Completion: 2026</p>
               <div className="mt-4 flex flex-wrap gap-2">
-                {['Full Stack Development', 'AI-Assisted Software Engineering', 'DevOps Fundamentals', 'Modern Development Workflows', 'Version Control'].map((item) => (
-                  <span key={item} className="rounded-full bg-slate-900 px-3 py-1 text-xs text-slate-300">
+                {['Full Stack Development', 'AI-Assisted Software Engineering', 'DevOps Fundamentals', 'Version Control'].map((item) => (
+                  <span key={item} className="rounded-lg border border-slate-800 bg-slate-950 px-3 py-1 text-xs font-mono text-slate-300">
                     {item}
                   </span>
                 ))}
@@ -339,7 +412,7 @@ const Topbar = () => {
             </article>
           </div>
           {resumePreview.isVisible && (
-            <div className="mt-6 overflow-hidden rounded-[8px] border border-white/10 bg-slate-900">
+            <div className="mt-6 overflow-hidden rounded-xl border border-slate-800 bg-slate-950 shadow-2xl">
               <iframe src={resumePreview.url} title="Resume Preview" className="h-[72vh] min-h-[520px] w-full bg-white" />
             </div>
           )}
@@ -347,7 +420,11 @@ const Topbar = () => {
       )}
 
       {activeTab === 'contact' && (
-        <SectionShell eyebrow="contact" title="Immediate joiner available for full-time full-stack opportunities.">
+        <SectionShell
+          activeTabLabel={activeTabObj?.label}
+          eyebrow="Get In Touch"
+          title="Available for full-time full stack opportunities & collaborative projects."
+        >
           <div className="mt-7 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
             {contacts.map((contact) => (
               <a
@@ -355,16 +432,16 @@ const Topbar = () => {
                 href={contact.href}
                 target={contact.href.startsWith('http') ? '_blank' : undefined}
                 rel={contact.href.startsWith('http') ? 'noreferrer' : undefined}
-                className="rounded-[8px] border border-white/10 bg-white/[0.04] p-5 transition hover:border-cyan-200/60 hover:bg-white/[0.07]"
+                className="group relative overflow-hidden rounded-xl border border-slate-800/80 bg-slate-900/40 p-5 transition duration-200 hover:border-indigo-500/40 hover:bg-slate-900/70"
               >
-                <p className="text-sm font-semibold text-cyan-200">{contact.label}</p>
-                <p className="mt-2 break-words text-sm text-slate-300">{contact.value}</p>
+                <p className="text-xs font-mono font-medium text-indigo-400 uppercase tracking-wider">{contact.label}</p>
+                <p className="mt-2 break-words text-sm font-semibold text-slate-200 group-hover:text-white transition-colors">{contact.value}</p>
               </a>
             ))}
           </div>
-          <p className="mt-8 max-w-2xl text-base leading-8 text-slate-300">
-            I am ready to discuss React.js frontend engineering, Node.js backend APIs,
-            TypeScript development, authentication workflows, testing, debugging, and deployment.
+          <p className="mt-8 max-w-2xl text-base leading-relaxed text-slate-300">
+            Feel free to reach out directly via email or LinkedIn for opportunities in React.js frontend engineering,
+            Node.js API development, TypeScript implementation, and full-stack software development.
           </p>
         </SectionShell>
       )}
