@@ -1,6 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import SectionHeading from '../ui/SectionHeading'
-import Badge from '../ui/Badge'
+import Tilt3D from '../ui/Tilt3D'
+
+const techDependencyMap = {
+  'React 19': ['TypeScript', 'Redux Toolkit', 'Tailwind CSS', 'REST Architecture'],
+  'TypeScript': ['React 19', 'Node.js', 'Mongoose ODM'],
+  'Node.js': ['Express.js', 'JWT Auth', 'MongoDB', 'RBAC Security'],
+  'Express.js': ['Node.js', 'JWT Auth', 'Bcrypt & Crypto', 'REST Architecture'],
+  'MongoDB': ['Mongoose ODM', 'Node.js', 'CRUD Pipelines'],
+  'Redux Toolkit': ['React 19', 'TypeScript', 'REST Architecture'],
+  'JWT Auth': ['Node.js', 'Express.js', 'RBAC Security'],
+  'Tailwind CSS': ['React 19', 'HTML5 & CSS3'],
+}
 
 const stackGroups = [
   {
@@ -47,31 +58,58 @@ const stackGroups = [
 ]
 
 export const EngineeringStack = () => {
+  const [hoveredTech, setHoveredTech] = useState(null)
+
+  const activeDependencies = hoveredTech ? (techDependencyMap[hoveredTech] || []) : []
+
   return (
     <section id="stack" className="py-16">
       <SectionHeading
         number="03"
-        eyebrow="TECHNICAL MATRIX"
-        title="Engineering Stack & Tooling"
-        description="Categorized breakdown of technologies, API security patterns, databases, and development tools."
+        eyebrow="DEPENDENCY MAP"
+        title="Interactive Technical Stack & Dependencies"
+        description="Hover any core technology to highlight connected architectural dependencies across frontend, backend, and data layers."
       />
 
       <div className="grid gap-6 md:grid-cols-2">
         {stackGroups.map((group) => (
-          <div key={group.category} className="editorial-card rounded-xl p-6">
-            <h3 className="font-mono text-xs font-bold text-[#22C55E] uppercase tracking-wider mb-4 border-b border-[#242424] pb-2">
-              // {group.category}
-            </h3>
+          <Tilt3D key={group.category} maxTilt={4} scale={1.01}>
+            <div className="editorial-card rounded-xl p-6 h-full flex flex-col justify-between">
+              <div>
+                <h3 className="font-mono text-xs font-bold text-[#22C55E] uppercase tracking-wider mb-4 border-b border-[#242424] pb-2 translate-z-20">
+                  // {group.category}
+                </h3>
 
-            <div className="space-y-3 font-sans text-xs">
-              {group.items.map((item) => (
-                <div key={item.name} className="flex items-center justify-between border-b border-[#111111] pb-2 last:border-b-0">
-                  <span className="font-semibold text-[#F5F5F5]">{item.name}</span>
-                  <span className="font-mono text-[11px] text-[#71717A]">{item.note}</span>
+                <div className="space-y-3 font-sans text-xs translate-z-10">
+                  {group.items.map((item) => {
+                    const isHovered = hoveredTech === item.name
+                    const isConnected = activeDependencies.includes(item.name)
+
+                    return (
+                      <div
+                        key={item.name}
+                        onMouseEnter={() => setHoveredTech(item.name)}
+                        onMouseLeave={() => setHoveredTech(null)}
+                        className={`flex items-center justify-between border-b border-[#111111] pb-2 last:border-b-0 cursor-pointer transition-all duration-200 p-1 rounded ${
+                          isHovered
+                            ? 'bg-[#111111] text-[#22C55E] font-bold border-[#22C55E]/40 translate-x-1'
+                            : isConnected
+                            ? 'bg-[#22C55E]/10 text-[#F5F5F5] font-semibold border-[#22C55E]/30'
+                            : 'text-[#F5F5F5] hover:bg-[#0A0A0A]'
+                        }`}
+                      >
+                        <span className="flex items-center gap-2">
+                          {isConnected && <span className="h-1.5 w-1.5 rounded-full bg-[#22C55E] animate-pulse" />}
+                          {item.name}
+                        </span>
+                        <span className="font-mono text-[11px] text-[#71717A]">{item.note}</span>
+                      </div>
+                    )
+                  })}
                 </div>
-              ))}
+              </div>
             </div>
-          </div>
+          </Tilt3D>
         ))}
       </div>
     </section>

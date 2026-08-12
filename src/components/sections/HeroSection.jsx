@@ -3,73 +3,61 @@ import { useDispatch } from 'react-redux'
 import { setActiveTab } from '../../store/slices/tabSlice'
 import { showResumePreview } from '../../store/slices/previewSlice'
 import resumeUrl from '../../../Resume/NACHIKETA_NR_MERN_STACK_DEVELOPER (1).pdf?url'
+import SystemArchitecture3D from '../3d/SystemArchitecture3D'
 
 const codeSnippets = [
   {
     id: 'component',
-    label: 'React Component (TypeScript)',
+    label: 'React Component',
     filename: 'KanbanBoard.tsx',
-    code: `import React, { useState, useEffect } from 'react';
+    code: `import React, { useState } from 'react';
 import { useKanbanStore } from '../store/useKanbanStore';
 
 export const KanbanBoard: React.FC = () => {
-  const { columns, updateApplicationStage } = useKanbanStore();
-  const [activeDragId, setActiveDragId] = useState<string | null>(null);
+  const { columns, updateStage } = useKanbanStore();
 
-  const handleDragEnd = async (id: string, targetStage: string) => {
-    // Optimistic UI update before network request
-    updateApplicationStage(id, targetStage);
-    await api.patch(\`/api/v1/applications/\${id}/stage\`, { stage: targetStage });
+  const handleDrop = async (id: string, targetStage: string) => {
+    updateStage(id, targetStage); // Optimistic UI update
+    await api.patch(\`/api/v1/applications/\${id}\`, { stage: targetStage });
   };
 
   return (
-    <div className="grid grid-cols-5 gap-4 font-sans">
-      {columns.map(col => (
-        <StageColumn key={col.id} column={col} onDrop={handleDragEnd} />
-      ))}
+    <div className="grid grid-cols-5 gap-4">
+      {columns.map(col => <StageColumn key={col.id} column={col} onDrop={handleDrop} />)}
     </div>
   );
 };`,
   },
   {
     id: 'backend',
-    label: 'Node.js REST API (Express)',
+    label: 'Express Middleware',
     filename: 'authMiddleware.ts',
     code: `import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 
 export const verifyJWT = (req: Request, res: Response, next: NextFunction) => {
   const token = req.cookies?.token || req.headers.authorization?.split(' ')[1];
-  
-  if (!token) {
-    return res.status(401).json({ success: false, message: 'Authentication required' });
-  }
+  if (!token) return res.status(401).json({ message: 'Authentication required' });
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { userId: string; role: string };
+    const decoded = jwt.verify(token, process.env.JWT_SECRET!);
     req.user = decoded;
     next();
   } catch (err) {
-    return res.status(403).json({ success: false, message: 'Invalid token' });
+    return res.status(403).json({ message: 'Invalid session token' });
   }
 };`,
   },
   {
     id: 'database',
-    label: 'MongoDB Schema (Mongoose)',
+    label: 'Mongoose Schema',
     filename: 'Application.ts',
     code: `import { Schema, model } from 'mongoose';
 
 const ApplicationSchema = new Schema({
   userId: { type: Schema.Types.ObjectId, ref: 'User', required: true, index: true },
-  company: { type: String, required: true, trim: true },
-  roleTitle: { type: String, required: true },
-  stage: { 
-    type: String, 
-    enum: ['Wishlist', 'Applied', 'Interviewing', 'Offered', 'Rejected'], 
-    default: 'Applied' 
-  },
-  appliedDate: { type: Date, default: Date.now },
+  company: { type: String, required: true },
+  stage: { type: String, enum: ['Wishlist', 'Applied', 'Interviewing'], default: 'Applied' }
 }, { timestamps: true });
 
 export const Application = model('Application', ApplicationSchema);`,
@@ -78,6 +66,7 @@ export const Application = model('Application', ApplicationSchema);`,
 
 export const HeroSection = () => {
   const dispatch = useDispatch()
+  const [showCode, setShowCode] = useState(false)
   const [activeCodeTab, setActiveCodeTab] = useState('component')
 
   const handleTabClick = (tabId) => {
@@ -133,6 +122,14 @@ export const HeroSection = () => {
               View Resume
             </button>
 
+            <button
+              type="button"
+              onClick={() => setShowCode(!showCode)}
+              className="rounded-md border border-[#242424] bg-[#050505] px-4 py-2.5 text-[#A1A1AA] hover:text-[#F5F5F5] hover:border-[#383838] transition-colors"
+            >
+              {showCode ? 'View 3D Arch' : 'View Code ↗'}
+            </button>
+
             <a
               href="https://github.com/Nachi12"
               target="_blank"
@@ -141,55 +138,37 @@ export const HeroSection = () => {
             >
               GitHub ↗
             </a>
-
-            <a
-              href="https://www.linkedin.com/in/nachiketa12/"
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-md border border-[#242424] bg-[#050505] px-4 py-2.5 text-[#A1A1AA] hover:text-[#F5F5F5] hover:border-[#383838] transition-colors"
-            >
-              LinkedIn ↗
-            </a>
           </div>
         </div>
 
-        {/* Right Column: Interactive Code Architecture Inspector */}
-        <div className="lg:col-span-5 border border-[#242424] rounded-xl bg-[#0A0A0A] overflow-hidden">
-          {/* Header Bar */}
-          <div className="flex items-center justify-between border-b border-[#242424] bg-[#111111] px-4 py-2.5">
-            <div className="flex items-center gap-2">
-              <span className="h-2.5 w-2.5 rounded-full bg-[#242424]" />
-              <span className="h-2.5 w-2.5 rounded-full bg-[#242424]" />
-              <span className="h-2.5 w-2.5 rounded-full bg-[#242424]" />
-              <span className="ml-2 font-mono text-xs text-[#71717A]">{activeSnippet.filename}</span>
+        {/* Right Column: 3D System Architecture or Code Inspector */}
+        <div className="lg:col-span-5">
+          {!showCode ? (
+            <SystemArchitecture3D />
+          ) : (
+            <div className="border border-[#242424] rounded-xl bg-[#0A0A0A] overflow-hidden">
+              <div className="flex items-center justify-between border-b border-[#242424] bg-[#111111] px-4 py-2.5">
+                <span className="font-mono text-xs text-[#71717A]">{activeSnippet.filename}</span>
+                <button onClick={() => setShowCode(false)} className="font-mono text-[10px] text-[#22C55E]">Back to 3D Arch</button>
+              </div>
+              <div className="flex border-b border-[#242424] bg-[#050505] font-mono text-[11px]">
+                {codeSnippets.map((s) => (
+                  <button
+                    key={s.id}
+                    onClick={() => setActiveCodeTab(s.id)}
+                    className={`flex-1 py-2 text-center border-r border-[#242424] last:border-r-0 ${
+                      activeCodeTab === s.id ? 'bg-[#0A0A0A] text-[#F5F5F5] font-semibold' : 'text-[#71717A]'
+                    }`}
+                  >
+                    {s.id.toUpperCase()}
+                  </button>
+                ))}
+              </div>
+              <pre className="p-4 font-mono text-xs text-slate-300 overflow-x-auto min-h-[260px]">
+                <code>{activeSnippet.code}</code>
+              </pre>
             </div>
-            <span className="font-mono text-[10px] text-[#22C55E] uppercase tracking-wider">Architecture</span>
-          </div>
-
-          {/* Snippet Switcher Tabs */}
-          <div className="flex border-b border-[#242424] bg-[#050505] font-mono text-[11px]">
-            {codeSnippets.map((s) => (
-              <button
-                key={s.id}
-                type="button"
-                onClick={() => setActiveCodeTab(s.id)}
-                className={`flex-1 py-2 text-center transition-colors border-r border-[#242424] last:border-r-0 ${
-                  activeCodeTab === s.id
-                    ? 'bg-[#0A0A0A] text-[#F5F5F5] font-semibold border-b-2 border-b-[#22C55E]'
-                    : 'text-[#71717A] hover:text-[#A1A1AA]'
-                }`}
-              >
-                {s.id.toUpperCase()}
-              </button>
-            ))}
-          </div>
-
-          {/* Code Viewer Container */}
-          <div className="p-4 font-mono text-xs leading-relaxed text-[#A1A1AA] overflow-x-auto bg-[#0A0A0A] min-h-[260px]">
-            <pre className="text-slate-300">
-              <code>{activeSnippet.code}</code>
-            </pre>
-          </div>
+          )}
         </div>
       </div>
 

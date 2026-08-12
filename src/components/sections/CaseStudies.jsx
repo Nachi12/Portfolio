@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useDispatch } from 'react-redux'
 import { showProjectPreview } from '../../store/slices/previewSlice'
 import SectionHeading from '../ui/SectionHeading'
 import Badge from '../ui/Badge'
+import Tilt3D from '../ui/Tilt3D'
 
 const projects = [
   {
@@ -95,54 +96,222 @@ export const CaseStudies = () => {
 
       <div className="space-y-16">
         {/* Project 01: HireLog */}
-        <div className="editorial-card rounded-xl p-6 lg:p-8">
-          <div className="flex flex-col lg:flex-row gap-8">
-            {/* Left Info Column */}
-            <div className="lg:w-7/12 space-y-5">
-              <div className="flex items-center justify-between border-b border-[#242424] pb-3">
-                <div className="flex items-center gap-3">
-                  <span className="font-mono text-xs text-[#22C55E] font-bold">{projects[0].number}</span>
-                  <span className="font-mono text-xs text-[#71717A]">• {projects[0].year}</span>
+        <Tilt3D maxTilt={5} scale={1.015}>
+          <div className="editorial-card rounded-xl p-6 lg:p-8">
+            <div className="flex flex-col lg:flex-row gap-8">
+              {/* Left Info Column */}
+              <div className="lg:w-7/12 space-y-5">
+                <div className="flex items-center justify-between border-b border-[#242424] pb-3 translate-z-20">
+                  <div className="flex items-center gap-3">
+                    <span className="font-mono text-xs text-[#22C55E] font-bold">{projects[0].number}</span>
+                    <span className="font-mono text-xs text-[#71717A]">• {projects[0].year}</span>
+                  </div>
+                  <Badge variant="muted">{projects[0].role}</Badge>
                 </div>
-                <Badge variant="muted">{projects[0].role}</Badge>
+
+                <div className="translate-z-20">
+                  <h3 className="font-sans text-2xl font-bold text-[#F5F5F5]">{projects[0].name}</h3>
+                  <p className="font-mono text-xs text-[#22C55E] mt-1">{projects[0].tagline}</p>
+                </div>
+
+                <div className="space-y-3 font-sans text-xs translate-z-10">
+                  <div>
+                    <span className="font-mono text-[10px] text-[#71717A] uppercase block">// Problem</span>
+                    <p className="text-[#A1A1AA] leading-relaxed mt-1">{projects[0].problem}</p>
+                  </div>
+                  <div>
+                    <span className="font-mono text-[10px] text-[#22C55E] uppercase block">// Solution</span>
+                    <p className="text-[#F5F5F5] leading-relaxed mt-1">{projects[0].solution}</p>
+                  </div>
+                </div>
+
+                <div className="translate-z-10">
+                  <span className="font-mono text-[10px] text-[#71717A] uppercase block mb-2">// Engineering Decisions</span>
+                  <ul className="space-y-1.5 font-sans text-xs text-[#A1A1AA]">
+                    {projects[0].decisions.map((d, i) => (
+                      <li key={i} className="flex gap-2">
+                        <span className="text-[#22C55E] font-mono">›</span>
+                        <span>{d}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="pt-3 border-t border-[#242424] flex flex-wrap items-center justify-between gap-3 font-mono text-xs translate-z-25">
+                  <div className="flex flex-wrap gap-1.5">
+                    {projects[0].stack.map((s) => (
+                      <Badge key={s} variant="default" size="xs">{s}</Badge>
+                    ))}
+                  </div>
+                  <a
+                    href={projects[0].github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-[#F5F5F5] hover:text-[#22C55E] transition-colors"
+                  >
+                    GitHub Repository ↗
+                  </a>
+                </div>
               </div>
 
-              <div>
-                <h3 className="font-sans text-2xl font-bold text-[#F5F5F5]">{projects[0].name}</h3>
-                <p className="font-mono text-xs text-[#22C55E] mt-1">{projects[0].tagline}</p>
+              {/* Right Architectural Diagram Box */}
+              <div className="lg:w-5/12 border border-[#242424] bg-[#050505] rounded-lg p-5 font-mono text-xs flex flex-col justify-between translate-z-20">
+                <div>
+                  <div className="flex items-center justify-between border-b border-[#242424] pb-3 mb-4">
+                    <span className="text-[#71717A] uppercase text-[10px]">// System Architecture</span>
+                    <span className="text-[#22C55E] text-[10px]">REST + Kanban</span>
+                  </div>
+                  <div className="space-y-3">
+                    {projects[0].architectureDetails.map((item, idx) => (
+                      <div key={idx} className="border-b border-[#111111] pb-2.5 last:border-b-0">
+                        <span className="text-[#22C55E] text-[10px] block font-bold">{item.layer}</span>
+                        <span className="text-[#A1A1AA] text-xs mt-0.5 block">{item.tech}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="mt-6 pt-3 border-t border-[#242424] text-[11px] text-[#71717A]">
+                  Status: Production Ready • Local Tested
+                </div>
+              </div>
+            </div>
+          </div>
+        </Tilt3D>
+
+        {/* Project 02: CONNECT */}
+        <Tilt3D maxTilt={5} scale={1.015}>
+          <div className="editorial-card rounded-xl p-6 lg:p-8">
+            <div className="flex flex-col lg:flex-row-reverse gap-8">
+              {/* Right Info Column */}
+              <div className="lg:w-7/12 space-y-5">
+                <div className="flex items-center justify-between border-b border-[#242424] pb-3 translate-z-20">
+                  <div className="flex items-center gap-3">
+                    <span className="font-mono text-xs text-[#22C55E] font-bold">{projects[1].number}</span>
+                    <span className="font-mono text-xs text-[#71717A]">• {projects[1].year}</span>
+                  </div>
+                  <Badge variant="muted">{projects[1].role}</Badge>
+                </div>
+
+                <div className="translate-z-20">
+                  <h3 className="font-sans text-2xl font-bold text-[#F5F5F5]">{projects[1].name}</h3>
+                  <p className="font-mono text-xs text-[#22C55E] mt-1">{projects[1].tagline}</p>
+                </div>
+
+                <div className="space-y-3 font-sans text-xs translate-z-10">
+                  <div>
+                    <span className="font-mono text-[10px] text-[#71717A] uppercase block">// Problem</span>
+                    <p className="text-[#A1A1AA] leading-relaxed mt-1">{projects[1].problem}</p>
+                  </div>
+                  <div>
+                    <span className="font-mono text-[10px] text-[#22C55E] uppercase block">// Solution</span>
+                    <p className="text-[#F5F5F5] leading-relaxed mt-1">{projects[1].solution}</p>
+                  </div>
+                </div>
+
+                <div className="translate-z-10">
+                  <span className="font-mono text-[10px] text-[#71717A] uppercase block mb-2">// Key Decisions</span>
+                  <ul className="space-y-1.5 font-sans text-xs text-[#A1A1AA]">
+                    {projects[1].decisions.map((d, i) => (
+                      <li key={i} className="flex gap-2">
+                        <span className="text-[#22C55E] font-mono">›</span>
+                        <span>{d}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="pt-3 border-t border-[#242424] flex flex-wrap items-center justify-between gap-3 font-mono text-xs translate-z-25">
+                  <div className="flex flex-wrap gap-1.5">
+                    {projects[1].stack.map((s) => (
+                      <Badge key={s} variant="default" size="xs">{s}</Badge>
+                    ))}
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <button
+                      type="button"
+                      onClick={() => handlePreview(projects[1].url)}
+                      className="text-[#22C55E] hover:underline font-bold"
+                    >
+                      Live Demo ↗
+                    </button>
+                    <a
+                      href={projects[1].github}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-[#F5F5F5] hover:text-[#22C55E] transition-colors"
+                    >
+                      GitHub ↗
+                    </a>
+                  </div>
+                </div>
               </div>
 
-              <div className="space-y-3 font-sans text-xs">
+              {/* Left RBAC Architecture Visual */}
+              <div className="lg:w-5/12 border border-[#242424] bg-[#050505] rounded-lg p-5 font-mono text-xs flex flex-col justify-between translate-z-20">
+                <div>
+                  <div className="flex items-center justify-between border-b border-[#242424] pb-3 mb-4">
+                    <span className="text-[#71717A] uppercase text-[10px]">// Role Security Architecture</span>
+                    <span className="text-[#22C55E] text-[10px]">RBAC + JWT</span>
+                  </div>
+                  <div className="space-y-2.5 text-[11px]">
+                    <div className="p-2 border border-[#242424] bg-[#0A0A0A] rounded">
+                      <span className="text-[#F5F5F5] font-bold block">ADMIN ROLE</span>
+                      <span className="text-[#71717A] text-[10px]">Full system access, interviewer assignment</span>
+                    </div>
+                    <div className="p-2 border border-[#242424] bg-[#0A0A0A] rounded">
+                      <span className="text-[#F5F5F5] font-bold block">INTERVIEWER ROLE</span>
+                      <span className="text-[#71717A] text-[10px]">Candidate evaluation, score submission</span>
+                    </div>
+                    <div className="p-2 border border-[#242424] bg-[#0A0A0A] rounded">
+                      <span className="text-[#F5F5F5] font-bold block">CANDIDATE ROLE</span>
+                      <span className="text-[#71717A] text-[10px]">Slot booking, feedback review</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="mt-4 pt-3 border-t border-[#242424] text-[10px] text-[#71717A]">
+                  Deployed on Netlify (Client) & Render (API)
+                </div>
+              </div>
+            </div>
+          </div>
+        </Tilt3D>
+
+        {/* Project 03: CryptoTrack */}
+        <Tilt3D maxTilt={5} scale={1.015}>
+          <div className="editorial-card rounded-xl p-6 lg:p-8">
+            <div className="space-y-5">
+              <div className="flex items-center justify-between border-b border-[#242424] pb-3 translate-z-20">
+                <div className="flex items-center gap-3">
+                  <span className="font-mono text-xs text-[#22C55E] font-bold">{projects[2].number}</span>
+                  <span className="font-mono text-xs text-[#71717A]">• {projects[2].year}</span>
+                </div>
+                <Badge variant="muted">{projects[2].role}</Badge>
+              </div>
+
+              <div className="translate-z-20">
+                <h3 className="font-sans text-2xl font-bold text-[#F5F5F5]">{projects[2].name}</h3>
+                <p className="font-mono text-xs text-[#22C55E] mt-1">{projects[2].tagline}</p>
+              </div>
+
+              <div className="grid gap-6 md:grid-cols-2 font-sans text-xs translate-z-10">
                 <div>
                   <span className="font-mono text-[10px] text-[#71717A] uppercase block">// Problem</span>
-                  <p className="text-[#A1A1AA] leading-relaxed mt-1">{projects[0].problem}</p>
+                  <p className="text-[#A1A1AA] leading-relaxed mt-1">{projects[2].problem}</p>
                 </div>
                 <div>
                   <span className="font-mono text-[10px] text-[#22C55E] uppercase block">// Solution</span>
-                  <p className="text-[#F5F5F5] leading-relaxed mt-1">{projects[0].solution}</p>
+                  <p className="text-[#F5F5F5] leading-relaxed mt-1">{projects[2].solution}</p>
                 </div>
               </div>
 
-              <div>
-                <span className="font-mono text-[10px] text-[#71717A] uppercase block mb-2">// Engineering Decisions</span>
-                <ul className="space-y-1.5 font-sans text-xs text-[#A1A1AA]">
-                  {projects[0].decisions.map((d, i) => (
-                    <li key={i} className="flex gap-2">
-                      <span className="text-[#22C55E] font-mono">›</span>
-                      <span>{d}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="pt-3 border-t border-[#242424] flex flex-wrap items-center justify-between gap-3 font-mono text-xs">
+              <div className="pt-3 border-t border-[#242424] flex flex-wrap items-center justify-between gap-3 font-mono text-xs translate-z-25">
                 <div className="flex flex-wrap gap-1.5">
-                  {projects[0].stack.map((s) => (
+                  {projects[2].stack.map((s) => (
                     <Badge key={s} variant="default" size="xs">{s}</Badge>
                   ))}
                 </div>
                 <a
-                  href={projects[0].github}
+                  href={projects[2].github}
                   target="_blank"
                   rel="noreferrer"
                   className="text-[#F5F5F5] hover:text-[#22C55E] transition-colors"
@@ -151,170 +320,8 @@ export const CaseStudies = () => {
                 </a>
               </div>
             </div>
-
-            {/* Right Architectural Diagram Box */}
-            <div className="lg:w-5/12 border border-[#242424] bg-[#050505] rounded-lg p-5 font-mono text-xs flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between border-b border-[#242424] pb-3 mb-4">
-                  <span className="text-[#71717A] uppercase text-[10px]">// System Architecture</span>
-                  <span className="text-[#22C55E] text-[10px]">REST + Kanban</span>
-                </div>
-                <div className="space-y-3">
-                  {projects[0].architectureDetails.map((item, idx) => (
-                    <div key={idx} className="border-b border-[#111111] pb-2.5 last:border-b-0">
-                      <span className="text-[#22C55E] text-[10px] block font-bold">{item.layer}</span>
-                      <span className="text-[#A1A1AA] text-xs mt-0.5 block">{item.tech}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="mt-6 pt-3 border-t border-[#242424] text-[11px] text-[#71717A]">
-                Status: Production Ready • Local Tested
-              </div>
-            </div>
           </div>
-        </div>
-
-        {/* Project 02: CONNECT */}
-        <div className="editorial-card rounded-xl p-6 lg:p-8">
-          <div className="flex flex-col lg:flex-row-reverse gap-8">
-            {/* Right Info Column */}
-            <div className="lg:w-7/12 space-y-5">
-              <div className="flex items-center justify-between border-b border-[#242424] pb-3">
-                <div className="flex items-center gap-3">
-                  <span className="font-mono text-xs text-[#22C55E] font-bold">{projects[1].number}</span>
-                  <span className="font-mono text-xs text-[#71717A]">• {projects[1].year}</span>
-                </div>
-                <Badge variant="muted">{projects[1].role}</Badge>
-              </div>
-
-              <div>
-                <h3 className="font-sans text-2xl font-bold text-[#F5F5F5]">{projects[1].name}</h3>
-                <p className="font-mono text-xs text-[#22C55E] mt-1">{projects[1].tagline}</p>
-              </div>
-
-              <div className="space-y-3 font-sans text-xs">
-                <div>
-                  <span className="font-mono text-[10px] text-[#71717A] uppercase block">// Problem</span>
-                  <p className="text-[#A1A1AA] leading-relaxed mt-1">{projects[1].problem}</p>
-                </div>
-                <div>
-                  <span className="font-mono text-[10px] text-[#22C55E] uppercase block">// Solution</span>
-                  <p className="text-[#F5F5F5] leading-relaxed mt-1">{projects[1].solution}</p>
-                </div>
-              </div>
-
-              <div>
-                <span className="font-mono text-[10px] text-[#71717A] uppercase block mb-2">// Key Decisions</span>
-                <ul className="space-y-1.5 font-sans text-xs text-[#A1A1AA]">
-                  {projects[1].decisions.map((d, i) => (
-                    <li key={i} className="flex gap-2">
-                      <span className="text-[#22C55E] font-mono">›</span>
-                      <span>{d}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="pt-3 border-t border-[#242424] flex flex-wrap items-center justify-between gap-3 font-mono text-xs">
-                <div className="flex flex-wrap gap-1.5">
-                  {projects[1].stack.map((s) => (
-                    <Badge key={s} variant="default" size="xs">{s}</Badge>
-                  ))}
-                </div>
-                <div className="flex items-center gap-3">
-                  <button
-                    type="button"
-                    onClick={() => handlePreview(projects[1].url)}
-                    className="text-[#22C55E] hover:underline font-bold"
-                  >
-                    Live Demo ↗
-                  </button>
-                  <a
-                    href={projects[1].github}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-[#F5F5F5] hover:text-[#22C55E] transition-colors"
-                  >
-                    GitHub ↗
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* Left RBAC Architecture Visual */}
-            <div className="lg:w-5/12 border border-[#242424] bg-[#050505] rounded-lg p-5 font-mono text-xs flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between border-b border-[#242424] pb-3 mb-4">
-                  <span className="text-[#71717A] uppercase text-[10px]">// Role Security Architecture</span>
-                  <span className="text-[#22C55E] text-[10px]">RBAC + JWT</span>
-                </div>
-                <div className="space-y-2.5 text-[11px]">
-                  <div className="p-2 border border-[#242424] bg-[#0A0A0A] rounded">
-                    <span className="text-[#F5F5F5] font-bold block">ADMIN ROLE</span>
-                    <span className="text-[#71717A] text-[10px]">Full system access, interviewer assignment</span>
-                  </div>
-                  <div className="p-2 border border-[#242424] bg-[#0A0A0A] rounded">
-                    <span className="text-[#F5F5F5] font-bold block">INTERVIEWER ROLE</span>
-                    <span className="text-[#71717A] text-[10px]">Candidate evaluation, score submission</span>
-                  </div>
-                  <div className="p-2 border border-[#242424] bg-[#0A0A0A] rounded">
-                    <span className="text-[#F5F5F5] font-bold block">CANDIDATE ROLE</span>
-                    <span className="text-[#71717A] text-[10px]">Slot booking, feedback review</span>
-                  </div>
-                </div>
-              </div>
-              <div className="mt-4 pt-3 border-t border-[#242424] text-[10px] text-[#71717A]">
-                Deployed on Netlify (Client) & Render (API)
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Project 03: CryptoTrack */}
-        <div className="editorial-card rounded-xl p-6 lg:p-8">
-          <div className="space-y-5">
-            <div className="flex items-center justify-between border-b border-[#242424] pb-3">
-              <div className="flex items-center gap-3">
-                <span className="font-mono text-xs text-[#22C55E] font-bold">{projects[2].number}</span>
-                <span className="font-mono text-xs text-[#71717A]">• {projects[2].year}</span>
-              </div>
-              <Badge variant="muted">{projects[2].role}</Badge>
-            </div>
-
-            <div>
-              <h3 className="font-sans text-2xl font-bold text-[#F5F5F5]">{projects[2].name}</h3>
-              <p className="font-mono text-xs text-[#22C55E] mt-1">{projects[2].tagline}</p>
-            </div>
-
-            <div className="grid gap-6 md:grid-cols-2 font-sans text-xs">
-              <div>
-                <span className="font-mono text-[10px] text-[#71717A] uppercase block">// Problem</span>
-                <p className="text-[#A1A1AA] leading-relaxed mt-1">{projects[2].problem}</p>
-              </div>
-              <div>
-                <span className="font-mono text-[10px] text-[#22C55E] uppercase block">// Solution</span>
-                <p className="text-[#F5F5F5] leading-relaxed mt-1">{projects[2].solution}</p>
-              </div>
-            </div>
-
-            <div className="pt-3 border-t border-[#242424] flex flex-wrap items-center justify-between gap-3 font-mono text-xs">
-              <div className="flex flex-wrap gap-1.5">
-                {projects[2].stack.map((s) => (
-                  <Badge key={s} variant="default" size="xs">{s}</Badge>
-                ))}
-              </div>
-              <a
-                href={projects[2].github}
-                target="_blank"
-                rel="noreferrer"
-                className="text-[#F5F5F5] hover:text-[#22C55E] transition-colors"
-              >
-                GitHub Repository ↗
-              </a>
-            </div>
-          </div>
-        </div>
+        </Tilt3D>
       </div>
     </section>
   )
