@@ -1,7 +1,9 @@
 import React from 'react'
+import { motion } from 'framer-motion'
 import SectionHeading from '../ui/SectionHeading'
 import Card from '../ui/Card'
 import Badge from '../ui/Badge'
+import Tilt3DCard from '../ui/Tilt3DCard'
 
 const stackCategories = [
   {
@@ -44,7 +46,7 @@ const stackCategories = [
 
 export const EngineeringStack = () => {
   return (
-    <section id="about" className="py-16">
+    <div>
       <SectionHeading
         eyebrow="Engineering Competencies"
         title="Technical Stack & System Capability"
@@ -52,30 +54,40 @@ export const EngineeringStack = () => {
       />
 
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {stackCategories.map((cat) => (
-          <Card key={cat.title} className="flex flex-col justify-between p-6">
-            <div>
-              <Badge variant="indigo" size="xs" className="mb-3">
-                {cat.eyebrow}
-              </Badge>
-              <h3 className="font-display text-lg font-bold text-white tracking-tight">{cat.title}</h3>
-              <p className="mt-2 text-xs leading-relaxed text-slate-400 font-sans">{cat.desc}</p>
-            </div>
+        {stackCategories.map((cat, idx) => (
+          <motion.div
+            key={cat.title}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: idx * 0.1 }}
+          >
+            <Tilt3DCard maxTilt={8} scale={1.03} className="h-full">
+              <Card className="flex flex-col justify-between h-full p-6 border-slate-800/80 bg-slate-900/60 backdrop-blur-xl hover:border-indigo-500/40 transition-colors">
+                <div className="translate-z-20">
+                  <Badge variant="indigo" size="xs" className="mb-3">
+                    {cat.eyebrow}
+                  </Badge>
+                  <h3 className="font-display text-lg font-bold text-white tracking-tight">{cat.title}</h3>
+                  <p className="mt-2 text-xs leading-relaxed text-slate-400 font-sans">{cat.desc}</p>
+                </div>
 
-            <div className="mt-6 pt-4 border-t border-slate-800/80 flex flex-wrap gap-1.5">
-              {cat.skills.map((skill) => (
-                <span
-                  key={skill}
-                  className="rounded-lg border border-slate-800 bg-slate-900 px-2.5 py-1 font-mono text-xs text-slate-300 shadow-sm"
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </Card>
+                <div className="mt-6 pt-4 border-t border-slate-800/80 flex flex-wrap gap-1.5 translate-z-10">
+                  {cat.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="rounded-lg border border-slate-800 bg-slate-950 px-2.5 py-1 font-mono text-xs text-slate-300 shadow-sm transition duration-200 hover:border-indigo-500/50 hover:bg-slate-900 hover:text-white hover:scale-105"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </Card>
+            </Tilt3DCard>
+          </motion.div>
         ))}
       </div>
-    </section>
+    </div>
   )
 }
 
