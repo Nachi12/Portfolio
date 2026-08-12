@@ -19,53 +19,40 @@ export const RecruiterBar = () => {
 
   return (
     <aside
-      className="fixed bottom-6 left-1/2 z-40 -translate-x-1/2 transform px-4 w-full max-w-xl"
-      aria-label="Recruiter Quick Actions"
+      className="fixed bottom-5 left-1/2 z-40 -translate-x-1/2 transform px-4 w-full max-w-lg"
+      aria-label="Quick Actions"
     >
-      <div className="flex items-center justify-between gap-3 rounded-2xl border border-slate-700/80 bg-[#0f172a]/90 p-2.5 shadow-2xl shadow-black/80 backdrop-blur-xl">
+      <div className="flex items-center justify-between gap-3 rounded-lg border border-[#242424] bg-[#0A0A0A]/95 p-2 shadow-xl backdrop-blur-md">
         {/* Availability Badge */}
-        <div className="hidden sm:flex items-center gap-2 pl-2 text-xs font-mono text-slate-300">
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
-          </span>
-          <span className="font-semibold text-emerald-400">Open to Roles</span>
+        <div className="hidden sm:flex items-center gap-2 pl-3 font-mono text-xs text-[#A1A1AA]">
+          <span className="h-1.5 w-1.5 rounded-full bg-[#22C55E]" />
+          <span>Available for Roles</span>
         </div>
 
         {/* Action Buttons */}
-        <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
+        <div className="flex items-center gap-2 w-full sm:w-auto justify-end font-mono text-xs">
           <button
             type="button"
             onClick={handleCopyEmail}
-            className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 rounded-xl border border-slate-700 bg-slate-800/80 px-3 py-1.5 text-xs font-mono font-medium text-slate-200 transition hover:border-slate-600 hover:bg-slate-700 active:scale-95"
+            className="flex-1 sm:flex-initial rounded border border-[#242424] bg-[#111111] px-3 py-1.5 text-[#F5F5F5] hover:border-[#383838] transition-colors"
           >
-            <svg className="h-3.5 w-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
-            </svg>
-            <span>{copied ? 'Copied Email! ✓' : 'Copy Email'}</span>
+            {copied ? 'Copied! ✓' : 'nrnachi34@gmail.com'}
           </button>
 
           <button
             type="button"
             onClick={handleResumePreview}
-            className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-indigo-500/30 bg-indigo-500/15 px-3.5 py-1.5 text-xs font-mono font-semibold text-indigo-300 transition hover:bg-indigo-500/25 active:scale-95"
+            className="rounded border border-[#242424] bg-[#111111] px-3 py-1.5 text-[#F5F5F5] hover:border-[#383838] transition-colors"
           >
-            <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-            </svg>
-            <span>View Resume</span>
+            View Resume
           </button>
 
           <a
             href={resumeUrl}
             download
-            className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-600 px-3.5 py-1.5 text-xs font-sans font-semibold text-white shadow-md shadow-indigo-500/25 transition hover:from-indigo-400 hover:to-violet-500 active:scale-95"
+            className="rounded bg-[#F5F5F5] px-3 py-1.5 text-[#050505] font-semibold hover:bg-white transition-colors"
           >
-            <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-            </svg>
-            <span>PDF</span>
+            PDF ⬇
           </a>
         </div>
       </div>

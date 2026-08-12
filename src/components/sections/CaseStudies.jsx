@@ -1,72 +1,77 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { motion } from 'framer-motion'
 import { showProjectPreview } from '../../store/slices/previewSlice'
 import SectionHeading from '../ui/SectionHeading'
-import Card from '../ui/Card'
 import Badge from '../ui/Badge'
-import Tilt3DCard from '../ui/Tilt3DCard'
 
 const projects = [
   {
     id: 'hirelog',
+    number: 'PROJECT 01',
     name: 'HireLog',
-    tagline: 'Multi-User Job Application Tracker SaaS',
+    year: '2025',
+    tagline: 'Multi-User Job Application Tracker SaaS Platform',
     role: 'Full Stack Engineer',
     url: null,
     github: 'https://github.com/Nachi12',
-    problem: 'Job seekers struggle to manage application pipelines across dozens of platforms, track follow-ups, and visualize success metrics.',
-    solution: 'Engineered a 5-stage Kanban tracking SaaS platform with 15+ secured REST API endpoints, automated email reminders, CSV analytics exports, and JWT authentication.',
-    architecture: [
-      'Frontend built with React.js, Redux Toolkit, and Tailwind CSS for responsive drag-and-drop state updates.',
-      'Node.js & Express.js API layer with modular route controllers and custom authentication middleware.',
-      'MongoDB & Mongoose schema design with indexed query optimization for rapid search & filtering.',
-    ],
+    problem: 'Job seekers struggle to track application stages across dozens of platforms, manage interview dates, and organize candidate metrics.',
+    solution: 'Engineered a multi-user 5-stage Kanban SaaS application with 15+ secured REST API endpoints, JWT session cookie verification, CSV exports, and optimistic state updates.',
     decisions: [
-      'Implemented JWT tokens stored securely in HTTP cookies for session persistence.',
-      'Designed 5-stage Kanban workflow with optimistic UI updates for zero-perceived latency.',
-      'Added CSV export worker utilities to allow candidates to archive application history.',
+      'Implemented optimistic UI state rendering in Redux Toolkit to provide instantaneous drag-and-drop column transitions.',
+      'Secured backend REST endpoints with custom JWT cookie authentication middleware and HTTP-only cookie storage.',
+      'Designed MongoDB Mongoose schemas with compound indexes to accelerate user-filtered pipeline queries.',
     ],
-    stack: ['React.js', 'Node.js', 'MongoDB', 'TypeScript', 'JWT Auth', 'Express.js', 'Redux Toolkit'],
+    architectureDetails: [
+      { layer: 'Frontend', tech: 'React.js, Redux Toolkit, Tailwind CSS' },
+      { layer: 'Backend API', tech: 'Node.js, Express.js, JWT Cookie Auth' },
+      { layer: 'Database', tech: 'MongoDB, Mongoose ODM (Indexed queries)' },
+    ],
+    stack: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'TypeScript', 'Redux Toolkit', 'JWT'],
   },
   {
     id: 'connect',
+    number: 'PROJECT 02',
     name: 'CONNECT',
+    year: '2024',
     tagline: 'Role-Based Mock Interview & Candidate Assessment Platform',
     role: 'Full Stack Engineer',
     url: 'https://connect-frontend1.netlify.app/',
     github: 'https://github.com/Nachi12',
-    problem: 'Bootcamps and hiring teams require structured interview scheduling with distinct permissions for Admins, Interviewers, and Candidates.',
-    solution: 'Designed and deployed a role-based access control (RBAC) web application securing 20+ backend REST API routes and providing clean role-specific dashboards.',
-    architecture: [
-      'Role-based JWT authentication pipeline validating permissions on protected backend endpoints.',
-      'Reusable React component library with dynamic form validation and real-time status indicators.',
-      'Deploys on Netlify (Frontend) and Render (Backend) with CORS configuration and environment isolation.',
-    ],
+    problem: 'Bootcamps and assessment teams require structured interview scheduling with granular permission levels for Admins, Interviewers, and Candidates.',
+    solution: 'Designed and deployed a role-based access control (RBAC) web application securing 20+ Express API endpoints and serving distinct client dashboards.',
     decisions: [
-      'Enforced RBAC middleware on Node.js routes to isolate Candidate vs Admin actions.',
-      'Created modular API service layers handling token refresh and standard error formatting.',
+      'Enforced RBAC authorization middleware validating user payload claims before permitting access to sensitive interview feedback routes.',
+      'Architected modular API client services managing token refreshes and standardized HTTP error responses.',
+      'Deployed frontend on Netlify and backend on Render with strict CORS policy and environment isolation.',
     ],
-    stack: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'JWT', 'RBAC Security', 'Netlify'],
+    architectureDetails: [
+      { layer: 'Auth Security', tech: 'RBAC Access Control, JWT, Bcrypt' },
+      { layer: 'API Routes', tech: '20+ Express.js controllers with validation' },
+      { layer: 'Deployment', tech: 'Netlify (Client) + Render (API Server)' },
+    ],
+    stack: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'RBAC Security', 'JWT', 'Netlify'],
   },
   {
     id: 'cryptotrack',
+    number: 'PROJECT 03',
     name: 'CryptoTrack',
+    year: '2024',
     tagline: 'Real-Time Cryptocurrency Analytics Dashboard',
     role: 'Frontend Developer',
     url: null,
     github: 'https://github.com/Nachi12',
-    problem: 'Crypto enthusiasts need instant price tracking, market trend visualization, and filtering across 100+ digital currencies.',
-    solution: 'Built a real-time cryptocurrency dashboard consuming REST APIs with client-side memoized search and responsive sorting algorithms.',
-    architecture: [
-      'Integrated external REST APIs for live market updates, market cap filtering, and price charts.',
-      'Optimized client-side rendering with memoized state filters to handle high-frequency data updates without UI lag.',
-    ],
+    problem: 'Digital asset enthusiasts require low-latency market tracking, client-side search filtering, and responsive price visualization across 100+ coins.',
+    solution: 'Built a real-time crypto analytics dashboard consuming REST APIs with client-side memoized search and responsive sorting algorithms.',
     decisions: [
-      'Implemented debounced search input to minimize unnecessary third-party API requests.',
-      'Designed dark-mode visual hierarchy with dynamic color indicators for price shifts.',
+      'Implemented debounced search inputs and memoized state filters to prevent unnecessary re-renders during high-frequency API data streams.',
+      'Designed a clean dark typography hierarchy with clear indicator tags for market capitalization and price changes.',
     ],
-    stack: ['React.js', 'REST API Integration', 'Client-Side Search', 'Tailwind CSS', 'State Management'],
+    architectureDetails: [
+      { layer: 'Client State', tech: 'React Hooks, Memoized Search Filters' },
+      { layer: 'API Layer', tech: 'CoinGecko REST API Integration' },
+      { layer: 'Styling', tech: 'Tailwind CSS, Dark High-Contrast Theme' },
+    ],
+    stack: ['React.js', 'REST API Integration', 'Client-Side Search', 'Tailwind CSS'],
   },
 ]
 
@@ -80,141 +85,238 @@ export const CaseStudies = () => {
   }
 
   return (
-    <div>
+    <section id="projects" className="py-16">
       <SectionHeading
-        eyebrow="Case Studies & Architecture"
-        title="Featured Full-Stack SaaS Systems"
-        description="Deep dives into real-world applications demonstrating database design, REST API security, state management, and production ownership."
+        number="01"
+        eyebrow="SELECTED WORK"
+        title="Featured Engineering Case Studies"
+        description="A selection of full-stack applications and systems demonstrating database design, REST API security, and state management."
       />
 
-      <div className="space-y-10">
-        {projects.map((project, index) => (
-          <motion.div
-            key={project.id}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: index * 0.15 }}
-          >
-            <Tilt3DCard maxTilt={6} scale={1.015}>
-              <Card className="p-8 lg:p-10 border border-slate-800/80 bg-slate-900/60 backdrop-blur-xl hover:border-indigo-500/40 transition-all duration-300">
-                {/* Header / Meta */}
-                <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between border-b border-slate-800/80 pb-6 translate-z-20">
-                  <div>
-                    <div className="flex flex-wrap items-center gap-3">
-                      <h3 className="font-display text-2xl font-bold text-white tracking-tight sm:text-3xl">
-                        {project.name}
-                      </h3>
-                      <Badge variant="indigo" size="sm">
-                        {project.role}
-                      </Badge>
-                    </div>
-                    <p className="mt-1.5 font-sans text-sm font-semibold text-indigo-300">
-                      {project.tagline}
-                    </p>
-                  </div>
-
-                  {/* Action Links */}
-                  <div className="flex flex-wrap items-center gap-3 shrink-0">
-                    {project.url && (
-                      <button
-                        type="button"
-                        onClick={() => handlePreview(project.url)}
-                        className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-500/15 border border-emerald-500/40 px-4 py-2 text-xs font-mono font-semibold text-emerald-300 transition duration-200 hover:bg-emerald-500/30 hover:scale-105 active:scale-95 shadow-md shadow-emerald-500/10"
-                      >
-                        <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                        </svg>
-                        <span>Live Preview</span>
-                      </button>
-                    )}
-
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-1.5 rounded-xl border border-slate-800 bg-slate-950/80 px-4 py-2 text-xs font-mono font-medium text-slate-300 transition duration-200 hover:border-indigo-500/40 hover:text-white hover:scale-105"
-                    >
-                      <span>Repository</span>
-                      <span className="text-xs">↗</span>
-                    </a>
-                  </div>
+      <div className="space-y-16">
+        {/* Project 01: HireLog */}
+        <div className="editorial-card rounded-xl p-6 lg:p-8">
+          <div className="flex flex-col lg:flex-row gap-8">
+            {/* Left Info Column */}
+            <div className="lg:w-7/12 space-y-5">
+              <div className="flex items-center justify-between border-b border-[#242424] pb-3">
+                <div className="flex items-center gap-3">
+                  <span className="font-mono text-xs text-[#22C55E] font-bold">{projects[0].number}</span>
+                  <span className="font-mono text-xs text-[#71717A]">• {projects[0].year}</span>
                 </div>
+                <Badge variant="muted">{projects[0].role}</Badge>
+              </div>
 
-                {/* Content Grid */}
-                <div className="mt-6 grid gap-8 lg:grid-cols-2 translate-z-10">
-                  {/* Problem & Solution */}
-                  <div className="space-y-4">
-                    <div>
-                      <h4 className="font-mono text-xs font-semibold uppercase tracking-wider text-slate-400">
-                        // Problem Statement
-                      </h4>
-                      <p className="mt-1.5 text-sm leading-relaxed text-slate-300 font-sans">
-                        {project.problem}
-                      </p>
-                    </div>
+              <div>
+                <h3 className="font-sans text-2xl font-bold text-[#F5F5F5]">{projects[0].name}</h3>
+                <p className="font-mono text-xs text-[#22C55E] mt-1">{projects[0].tagline}</p>
+              </div>
 
-                    <div>
-                      <h4 className="font-mono text-xs font-semibold uppercase tracking-wider text-indigo-400">
-                        // Engineering Solution
-                      </h4>
-                      <p className="mt-1.5 text-sm leading-relaxed text-slate-300 font-sans">
-                        {project.solution}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Architecture & Key Decisions */}
-                  <div className="space-y-4">
-                    <div>
-                      <h4 className="font-mono text-xs font-semibold uppercase tracking-wider text-slate-400">
-                        // Architecture & Data Flow
-                      </h4>
-                      <ul className="mt-2 space-y-1.5 text-xs text-slate-300 font-sans">
-                        {project.architecture.map((item, idx) => (
-                          <li key={idx} className="flex gap-2">
-                            <span className="text-indigo-400 font-mono">›</span>
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div>
-                      <h4 className="font-mono text-xs font-semibold uppercase tracking-wider text-slate-400">
-                        // Technical Trade-Offs & Decisions
-                      </h4>
-                      <ul className="mt-2 space-y-1.5 text-xs text-slate-300 font-sans">
-                        {project.decisions.map((item, idx) => (
-                          <li key={idx} className="flex gap-2">
-                            <span className="text-emerald-400 font-mono">✓</span>
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
+              <div className="space-y-3 font-sans text-xs">
+                <div>
+                  <span className="font-mono text-[10px] text-[#71717A] uppercase block">// Problem</span>
+                  <p className="text-[#A1A1AA] leading-relaxed mt-1">{projects[0].problem}</p>
                 </div>
+                <div>
+                  <span className="font-mono text-[10px] text-[#22C55E] uppercase block">// Solution</span>
+                  <p className="text-[#F5F5F5] leading-relaxed mt-1">{projects[0].solution}</p>
+                </div>
+              </div>
 
-                {/* Tech Stack Badges */}
-                <div className="mt-8 pt-5 border-t border-slate-800/80 flex flex-wrap gap-2 items-center translate-z-20">
-                  <span className="font-mono text-xs text-slate-500 mr-2">Technologies:</span>
-                  {project.stack.map((item) => (
-                    <span
-                      key={item}
-                      className="rounded-lg border border-slate-800/80 bg-slate-950 px-3 py-1 font-mono text-xs text-slate-300 shadow-sm transition hover:border-indigo-500/40 hover:text-indigo-200"
-                    >
-                      {item}
-                    </span>
+              <div>
+                <span className="font-mono text-[10px] text-[#71717A] uppercase block mb-2">// Engineering Decisions</span>
+                <ul className="space-y-1.5 font-sans text-xs text-[#A1A1AA]">
+                  {projects[0].decisions.map((d, i) => (
+                    <li key={i} className="flex gap-2">
+                      <span className="text-[#22C55E] font-mono">›</span>
+                      <span>{d}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="pt-3 border-t border-[#242424] flex flex-wrap items-center justify-between gap-3 font-mono text-xs">
+                <div className="flex flex-wrap gap-1.5">
+                  {projects[0].stack.map((s) => (
+                    <Badge key={s} variant="default" size="xs">{s}</Badge>
                   ))}
                 </div>
-              </Card>
-            </Tilt3DCard>
-          </motion.div>
-        ))}
+                <a
+                  href={projects[0].github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-[#F5F5F5] hover:text-[#22C55E] transition-colors"
+                >
+                  GitHub Repository ↗
+                </a>
+              </div>
+            </div>
+
+            {/* Right Architectural Diagram Box */}
+            <div className="lg:w-5/12 border border-[#242424] bg-[#050505] rounded-lg p-5 font-mono text-xs flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between border-b border-[#242424] pb-3 mb-4">
+                  <span className="text-[#71717A] uppercase text-[10px]">// System Architecture</span>
+                  <span className="text-[#22C55E] text-[10px]">REST + Kanban</span>
+                </div>
+                <div className="space-y-3">
+                  {projects[0].architectureDetails.map((item, idx) => (
+                    <div key={idx} className="border-b border-[#111111] pb-2.5 last:border-b-0">
+                      <span className="text-[#22C55E] text-[10px] block font-bold">{item.layer}</span>
+                      <span className="text-[#A1A1AA] text-xs mt-0.5 block">{item.tech}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="mt-6 pt-3 border-t border-[#242424] text-[11px] text-[#71717A]">
+                Status: Production Ready • Local Tested
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Project 02: CONNECT */}
+        <div className="editorial-card rounded-xl p-6 lg:p-8">
+          <div className="flex flex-col lg:flex-row-reverse gap-8">
+            {/* Right Info Column */}
+            <div className="lg:w-7/12 space-y-5">
+              <div className="flex items-center justify-between border-b border-[#242424] pb-3">
+                <div className="flex items-center gap-3">
+                  <span className="font-mono text-xs text-[#22C55E] font-bold">{projects[1].number}</span>
+                  <span className="font-mono text-xs text-[#71717A]">• {projects[1].year}</span>
+                </div>
+                <Badge variant="muted">{projects[1].role}</Badge>
+              </div>
+
+              <div>
+                <h3 className="font-sans text-2xl font-bold text-[#F5F5F5]">{projects[1].name}</h3>
+                <p className="font-mono text-xs text-[#22C55E] mt-1">{projects[1].tagline}</p>
+              </div>
+
+              <div className="space-y-3 font-sans text-xs">
+                <div>
+                  <span className="font-mono text-[10px] text-[#71717A] uppercase block">// Problem</span>
+                  <p className="text-[#A1A1AA] leading-relaxed mt-1">{projects[1].problem}</p>
+                </div>
+                <div>
+                  <span className="font-mono text-[10px] text-[#22C55E] uppercase block">// Solution</span>
+                  <p className="text-[#F5F5F5] leading-relaxed mt-1">{projects[1].solution}</p>
+                </div>
+              </div>
+
+              <div>
+                <span className="font-mono text-[10px] text-[#71717A] uppercase block mb-2">// Key Decisions</span>
+                <ul className="space-y-1.5 font-sans text-xs text-[#A1A1AA]">
+                  {projects[1].decisions.map((d, i) => (
+                    <li key={i} className="flex gap-2">
+                      <span className="text-[#22C55E] font-mono">›</span>
+                      <span>{d}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="pt-3 border-t border-[#242424] flex flex-wrap items-center justify-between gap-3 font-mono text-xs">
+                <div className="flex flex-wrap gap-1.5">
+                  {projects[1].stack.map((s) => (
+                    <Badge key={s} variant="default" size="xs">{s}</Badge>
+                  ))}
+                </div>
+                <div className="flex items-center gap-3">
+                  <button
+                    type="button"
+                    onClick={() => handlePreview(projects[1].url)}
+                    className="text-[#22C55E] hover:underline font-bold"
+                  >
+                    Live Demo ↗
+                  </button>
+                  <a
+                    href={projects[1].github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-[#F5F5F5] hover:text-[#22C55E] transition-colors"
+                  >
+                    GitHub ↗
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Left RBAC Architecture Visual */}
+            <div className="lg:w-5/12 border border-[#242424] bg-[#050505] rounded-lg p-5 font-mono text-xs flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between border-b border-[#242424] pb-3 mb-4">
+                  <span className="text-[#71717A] uppercase text-[10px]">// Role Security Architecture</span>
+                  <span className="text-[#22C55E] text-[10px]">RBAC + JWT</span>
+                </div>
+                <div className="space-y-2.5 text-[11px]">
+                  <div className="p-2 border border-[#242424] bg-[#0A0A0A] rounded">
+                    <span className="text-[#F5F5F5] font-bold block">ADMIN ROLE</span>
+                    <span className="text-[#71717A] text-[10px]">Full system access, interviewer assignment</span>
+                  </div>
+                  <div className="p-2 border border-[#242424] bg-[#0A0A0A] rounded">
+                    <span className="text-[#F5F5F5] font-bold block">INTERVIEWER ROLE</span>
+                    <span className="text-[#71717A] text-[10px]">Candidate evaluation, score submission</span>
+                  </div>
+                  <div className="p-2 border border-[#242424] bg-[#0A0A0A] rounded">
+                    <span className="text-[#F5F5F5] font-bold block">CANDIDATE ROLE</span>
+                    <span className="text-[#71717A] text-[10px]">Slot booking, feedback review</span>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-4 pt-3 border-t border-[#242424] text-[10px] text-[#71717A]">
+                Deployed on Netlify (Client) & Render (API)
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Project 03: CryptoTrack */}
+        <div className="editorial-card rounded-xl p-6 lg:p-8">
+          <div className="space-y-5">
+            <div className="flex items-center justify-between border-b border-[#242424] pb-3">
+              <div className="flex items-center gap-3">
+                <span className="font-mono text-xs text-[#22C55E] font-bold">{projects[2].number}</span>
+                <span className="font-mono text-xs text-[#71717A]">• {projects[2].year}</span>
+              </div>
+              <Badge variant="muted">{projects[2].role}</Badge>
+            </div>
+
+            <div>
+              <h3 className="font-sans text-2xl font-bold text-[#F5F5F5]">{projects[2].name}</h3>
+              <p className="font-mono text-xs text-[#22C55E] mt-1">{projects[2].tagline}</p>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2 font-sans text-xs">
+              <div>
+                <span className="font-mono text-[10px] text-[#71717A] uppercase block">// Problem</span>
+                <p className="text-[#A1A1AA] leading-relaxed mt-1">{projects[2].problem}</p>
+              </div>
+              <div>
+                <span className="font-mono text-[10px] text-[#22C55E] uppercase block">// Solution</span>
+                <p className="text-[#F5F5F5] leading-relaxed mt-1">{projects[2].solution}</p>
+              </div>
+            </div>
+
+            <div className="pt-3 border-t border-[#242424] flex flex-wrap items-center justify-between gap-3 font-mono text-xs">
+              <div className="flex flex-wrap gap-1.5">
+                {projects[2].stack.map((s) => (
+                  <Badge key={s} variant="default" size="xs">{s}</Badge>
+                ))}
+              </div>
+              <a
+                href={projects[2].github}
+                target="_blank"
+                rel="noreferrer"
+                className="text-[#F5F5F5] hover:text-[#22C55E] transition-colors"
+              >
+                GitHub Repository ↗
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   )
 }
 
