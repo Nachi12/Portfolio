@@ -1,5 +1,9 @@
 import React from 'react'
+import { motion } from 'framer-motion'
 import SectionHeading from '../ui/SectionHeading'
+import ContinuousSectionWrapper from '../ui/ContinuousSectionWrapper'
+import ScrollParallax from '../ui/ScrollParallax'
+import { staggerItem } from '../../utils/motion'
 
 const methodologySteps = [
   {
@@ -31,7 +35,7 @@ const methodologySteps = [
 
 export const EngineeringMethodology = () => {
   return (
-    <section id="methodology" className="py-16">
+    <ContinuousSectionWrapper id="methodology" glowColor="emerald" stagger={true}>
       <SectionHeading
         number="02"
         eyebrow="ENGINEERING PROCESS"
@@ -40,26 +44,30 @@ export const EngineeringMethodology = () => {
       />
 
       <div className="grid gap-6 md:grid-cols-5">
-        {methodologySteps.map((step) => (
-          <div
+        {methodologySteps.map((step, index) => (
+          <motion.div
             key={step.num}
-            className="editorial-card rounded-xl p-5 flex flex-col justify-between"
+            variants={staggerItem}
+            whileHover={{ y: -6, transition: { duration: 0.2, ease: 'easeOut' } }}
+            className="editorial-card rounded-xl p-5 flex flex-col justify-between group transition-colors hover:border-[#22C55E]/40"
           >
-            <div>
-              <span className="font-mono text-sm font-bold text-[#22C55E] block mb-3">
-                {step.num}
-              </span>
-              <h3 className="font-sans text-sm font-bold text-[#F5F5F5] mb-2 leading-snug">
-                {step.title}
-              </h3>
-              <p className="font-sans text-xs text-[#A1A1AA] leading-relaxed">
-                {step.desc}
-              </p>
-            </div>
-          </div>
+            <ScrollParallax speed={index % 2 === 0 ? -0.02 : 0.02}>
+              <div>
+                <span className="font-mono text-sm font-bold text-[#22C55E] block mb-3 group-hover:scale-110 origin-left transition-transform">
+                  {step.num}
+                </span>
+                <h3 className="font-sans text-sm font-bold text-[#F5F5F5] mb-2 leading-snug group-hover:text-white">
+                  {step.title}
+                </h3>
+                <p className="font-sans text-xs text-[#A1A1AA] leading-relaxed">
+                  {step.desc}
+                </p>
+              </div>
+            </ScrollParallax>
+          </motion.div>
         ))}
       </div>
-    </section>
+    </ContinuousSectionWrapper>
   )
 }
 

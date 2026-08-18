@@ -1,5 +1,9 @@
 import React, { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import SectionHeading from '../ui/SectionHeading'
+import ContinuousSectionWrapper from '../ui/ContinuousSectionWrapper'
+import Magnetic from '../ui/Magnetic'
+import { staggerItem, buttonHover, buttonTap } from '../../utils/motion'
 
 const contactMethods = [
   { label: 'Direct Email', value: 'nrnachi34@gmail.com', href: 'mailto:nrnachi34@gmail.com' },
@@ -27,7 +31,7 @@ export const ContactSection = () => {
   }
 
   return (
-    <section id="contact" className="py-16">
+    <ContinuousSectionWrapper id="contact" glowColor="emerald" stagger={true}>
       <SectionHeading
         number="07"
         eyebrow="GET IN TOUCH"
@@ -37,106 +41,124 @@ export const ContactSection = () => {
 
       <div className="grid gap-8 lg:grid-cols-12">
         {/* Contact Links */}
-        <div className="lg:col-span-5 space-y-4">
+        <motion.div variants={staggerItem} className="lg:col-span-5 space-y-4">
           <div className="editorial-card rounded-xl p-6 space-y-4">
             <h4 className="font-mono text-xs font-bold text-[#22C55E] uppercase tracking-wider">// DIRECT CONTACT</h4>
             
             <div className="space-y-3 font-mono text-xs">
               {contactMethods.map((m) => (
-                <div key={m.label} className="border-b border-[#111111] pb-2 last:border-b-0">
+                <div key={m.label} className="border-b border-[#111111] pb-2.5 last:border-b-0">
                   <span className="text-[#71717A] text-[10px] uppercase block">{m.label}</span>
-                  <a
-                    href={m.href}
-                    target={m.href.startsWith('http') ? '_blank' : undefined}
-                    rel={m.href.startsWith('http') ? 'noreferrer' : undefined}
-                    className="text-[#F5F5F5] hover:text-[#22C55E] transition-colors font-semibold mt-0.5 block"
-                  >
-                    {m.value} ↗
-                  </a>
+                  <Magnetic maxDisplacement={6}>
+                    <motion.a
+                      whileHover={{ x: 2, color: '#22C55E' }}
+                      href={m.href}
+                      target={m.href.startsWith('http') ? '_blank' : undefined}
+                      rel={m.href.startsWith('http') ? 'noreferrer' : undefined}
+                      className="text-[#F5F5F5] transition-colors font-semibold mt-0.5 inline-block"
+                    >
+                      {m.value} ↗
+                    </motion.a>
+                  </Magnetic>
                 </div>
               ))}
             </div>
 
             <div className="pt-2">
-              <button
-                type="button"
-                onClick={handleCopyEmail}
-                className="w-full rounded border border-[#242424] bg-[#111111] py-2 font-mono text-xs text-[#F5F5F5] hover:border-[#383838] transition-colors"
-              >
-                {copied ? 'Email Copied to Clipboard! ✓' : 'Copy Email Address'}
-              </button>
+              <Magnetic maxDisplacement={8} className="w-full">
+                <motion.button
+                  whileHover={buttonHover}
+                  whileTap={buttonTap}
+                  type="button"
+                  onClick={handleCopyEmail}
+                  className="w-full rounded border border-[#242424] bg-[#111111] py-2.5 font-mono text-xs text-[#F5F5F5] hover:border-[#383838] transition-colors"
+                >
+                  {copied ? 'Email Copied to Clipboard! ✓' : 'Copy Email Address'}
+                </motion.button>
+              </Magnetic>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Direct Contact Form */}
-        <div className="lg:col-span-7 editorial-card rounded-xl p-6 lg:p-8">
+        <motion.div variants={staggerItem} className="lg:col-span-7 editorial-card rounded-xl p-6 lg:p-8">
           <h4 className="font-mono text-xs font-bold text-[#F5F5F5] uppercase tracking-wider border-b border-[#242424] pb-3 mb-5">
             // SEND DIRECT MESSAGE
           </h4>
 
-          {submitted ? (
-            <div className="p-4 rounded border border-[#22C55E]/30 bg-[#22C55E]/10 text-[#22C55E] font-mono text-xs text-center">
-              ✓ Message recorded. I will get back to you within 24 hours.
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-4 font-sans text-xs">
-              <div>
-                <label htmlFor="name" className="block font-mono text-[11px] text-[#A1A1AA] mb-1.5">
-                  YOUR NAME / ROLE
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  required
-                  value={formState.name}
-                  onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                  placeholder="e.g. Sarah Jenkins (Senior Technical Recruiter)"
-                  className="w-full rounded border border-[#242424] bg-[#050505] p-3 text-[#F5F5F5] focus:border-[#22C55E] focus:outline-none font-sans"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="email" className="block font-mono text-[11px] text-[#A1A1AA] mb-1.5">
-                  YOUR EMAIL
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  required
-                  value={formState.email}
-                  onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                  placeholder="sarah@company.com"
-                  className="w-full rounded border border-[#242424] bg-[#050505] p-3 text-[#F5F5F5] focus:border-[#22C55E] focus:outline-none font-sans"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block font-mono text-[11px] text-[#A1A1AA] mb-1.5">
-                  MESSAGE / OPPORTUNITY DETAILS
-                </label>
-                <textarea
-                  id="message"
-                  required
-                  rows={4}
-                  value={formState.message}
-                  onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                  placeholder="We are looking for a Full Stack Engineer for our React & Node.js platform..."
-                  className="w-full rounded border border-[#242424] bg-[#050505] p-3 text-[#F5F5F5] focus:border-[#22C55E] focus:outline-none font-sans"
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full rounded bg-[#F5F5F5] py-3 font-mono text-xs font-semibold text-[#050505] hover:bg-white transition-colors"
+          <AnimatePresence mode="wait">
+            {submitted ? (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                className="p-4 rounded border border-[#22C55E]/30 bg-[#22C55E]/10 text-[#22C55E] font-mono text-xs text-center"
               >
-                Send Message
-              </button>
-            </form>
-          )}
-        </div>
+                ✓ Message recorded. I will get back to you within 24 hours.
+              </motion.div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-4 font-sans text-xs">
+                <div>
+                  <label htmlFor="name" className="block font-mono text-[11px] text-[#A1A1AA] mb-1.5">
+                    YOUR NAME / ROLE
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    required
+                    value={formState.name}
+                    onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+                    placeholder="e.g. Sarah Jenkins (Senior Technical Recruiter)"
+                    className="w-full rounded border border-[#242424] bg-[#050505] p-3 text-[#F5F5F5] focus:border-[#22C55E] focus:outline-none font-sans transition-colors"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="email" className="block font-mono text-[11px] text-[#A1A1AA] mb-1.5">
+                    YOUR EMAIL
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    required
+                    value={formState.email}
+                    onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                    placeholder="sarah@company.com"
+                    className="w-full rounded border border-[#242424] bg-[#050505] p-3 text-[#F5F5F5] focus:border-[#22C55E] focus:outline-none font-sans transition-colors"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block font-mono text-[11px] text-[#A1A1AA] mb-1.5">
+                    MESSAGE / OPPORTUNITY DETAILS
+                  </label>
+                  <textarea
+                    id="message"
+                    required
+                    rows={4}
+                    value={formState.message}
+                    onChange={(e) => setFormState({ ...formState, message: e.target.value })}
+                    placeholder="We are looking for a Full Stack Engineer for our React & Node.js platform..."
+                    className="w-full rounded border border-[#242424] bg-[#050505] p-3 text-[#F5F5F5] focus:border-[#22C55E] focus:outline-none font-sans transition-colors"
+                  />
+                </div>
+
+                <Magnetic maxDisplacement={10} className="w-full">
+                  <motion.button
+                    whileHover={buttonHover}
+                    whileTap={buttonTap}
+                    type="submit"
+                    className="w-full rounded bg-[#F5F5F5] py-3 font-mono text-xs font-semibold text-[#050505] hover:bg-white transition-colors"
+                  >
+                    Send Message
+                  </motion.button>
+                </Magnetic>
+              </form>
+            )}
+          </AnimatePresence>
+        </motion.div>
       </div>
-    </section>
+    </ContinuousSectionWrapper>
   )
 }
 

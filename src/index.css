@@ -59,8 +59,13 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
   color-scheme: dark;
   background-color: #050505;
+}
+
+section {
+  scroll-margin-top: 80px;
 }
 
 body {
@@ -78,6 +83,12 @@ body {
 button,
 a {
   -webkit-tap-highlight-color: transparent;
+}
+
+/* Hardware acceleration helper */
+.gpu-layer {
+  transform: translateZ(0);
+  will-change: transform, opacity;
 }
 
 /* Minimalist Scrollbar */
@@ -103,7 +114,7 @@ a {
 .editorial-card {
   background-color: #0A0A0A;
   border: 1px solid #242424;
-  transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.2s cubic-bezier(0.2, 0, 0.2, 1);
+  transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   transform-style: preserve-3d;
 }
 
@@ -124,8 +135,11 @@ a {
   color: #F5F5F5;
 }
 
-/* Accessibility: Reduced Motion */
+/* Accessibility: Reduced Motion Override */
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
   *,
   ::before,
   ::after {
@@ -135,3 +149,4 @@ a {
     scroll-behavior: auto !important;
   }
 }
+

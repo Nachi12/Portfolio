@@ -11,35 +11,45 @@ import AboutSection from './components/sections/AboutSection'
 import InteractiveResume from './components/sections/InteractiveResume'
 import ContactSection from './components/sections/ContactSection'
 import LivePreviewModal from './components/ui/LivePreviewModal'
+import SmoothScrollProvider from './components/ui/SmoothScrollProvider'
+import CustomCursor from './components/ui/CustomCursor'
+import Preloader from './components/ui/Preloader'
+import GlobalBackgroundScene from './components/3d/GlobalBackgroundScene'
 import './App.css'
 
 function App() {
   return (
-    <div className="min-h-screen bg-[#050505] text-[#F5F5F5] font-sans selection:bg-[#22C55E]/20 selection:text-[#F5F5F5]">
-      {/* Navigation Bar */}
-      <Navbar />
+    <SmoothScrollProvider>
+      <Preloader />
+      <CustomCursor />
+      <GlobalBackgroundScene />
 
-      {/* Main Editorial Page Layout */}
-      <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <HeroSection />
-        <CaseStudies />
-        <EngineeringMethodology />
-        <EngineeringStack />
-        <Experience />
-        <AboutSection />
-        <InteractiveResume />
-        <ContactSection />
-      </main>
+      <div className="min-h-screen bg-[#050505] text-[#F5F5F5] font-sans selection:bg-[#22C55E]/20 selection:text-[#F5F5F5] relative overflow-hidden">
+        {/* Navigation Bar */}
+        <Navbar />
 
-      {/* Footer */}
-      <Footer />
+        {/* Main Editorial Page Layout */}
+        <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+          <HeroSection />
+          <CaseStudies />
+          <EngineeringMethodology />
+          <EngineeringStack />
+          <Experience />
+          <AboutSection />
+          <InteractiveResume />
+          <ContactSection />
+        </main>
 
-      {/* Recruiter Quick Action Bar */}
-      <RecruiterBar />
+        {/* Footer */}
+        <Footer />
 
-      {/* Interactive Modal for Resume & Live Previews */}
-      <LivePreviewModal />
-    </div>
+        {/* Recruiter Quick Action Bar */}
+        <RecruiterBar />
+
+        {/* Interactive Modal for Resume & Live Previews */}
+        <LivePreviewModal />
+      </div>
+    </SmoothScrollProvider>
   )
 }
 
