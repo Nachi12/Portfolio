@@ -92,9 +92,11 @@ export const Experience = () => {
 
             return (
               <motion.div key={exp.id} variants={staggerItem} className="relative">
-                {/* Active Spatial Node Indicator */}
+                {/* Active Spatial Node Indicator (Expands on Hover) */}
                 <button
                   type="button"
+                  onMouseEnter={() => setExpandedId(exp.id)}
+                  onFocus={() => setExpandedId(exp.id)}
                   onClick={() => setExpandedId(exp.id)}
                   aria-label={`Select ${exp.role} experience`}
                   className={`absolute -left-[31px] sm:-left-[39px] top-4 h-3.5 w-3.5 rounded-full cursor-pointer transition-all duration-300 border-2 ${
@@ -106,9 +108,10 @@ export const Experience = () => {
 
                 <Tilt3D maxTilt={4} scale={1.01}>
                   <div
+                    onMouseEnter={() => setExpandedId(exp.id)}
                     onClick={() => setExpandedId(exp.id)}
-                    className={`editorial-card rounded-xl p-5 cursor-pointer transition-all duration-200 ${
-                      isExpanded ? 'border-[#22C55E]/50 bg-[#0D0D0D] shadow-lg' : ''
+                    className={`editorial-card rounded-xl p-5 cursor-pointer transition-all duration-300 ${
+                      isExpanded ? 'border-[#22C55E]/50 bg-[#0D0D0D] shadow-lg shadow-[#22C55E]/5' : 'hover:border-[#22C55E]/30'
                     }`}
                   >
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-[#242424] pb-3 translate-z-20">
