@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import * as THREE from 'three'
 
-export const ProjectDevice3D = ({ title = 'CASE STUDY PREVIEW', tag = 'MERN STACK' }) => {
+export const ProjectDevice3D = ({ title = 'CASE STUDY PREVIEW', tag = 'MERN STACK', image }) => {
   const containerRef = useRef(null)
 
   useEffect(() => {
@@ -33,20 +33,30 @@ export const ProjectDevice3D = ({ title = 'CASE STUDY PREVIEW', tag = 'MERN STAC
     const frameMesh = new THREE.Mesh(frameGeo, frameMat)
     deviceGroup.add(frameMesh)
 
-    // Edges
+    // Glowing Green Edges
     const edges = new THREE.EdgesGeometry(frameGeo)
     const lineMat = new THREE.LineBasicMaterial({ color: 0x22C55E, linewidth: 1.5 })
     const wireframe = new THREE.LineSegments(edges, lineMat)
     deviceGroup.add(wireframe)
 
-    // Screen Inner Plane
+    // Screen Inner Plane with optional texture image
     const screenGeo = new THREE.PlaneGeometry(3.0, 1.8)
-    const screenMat = new THREE.MeshBasicMaterial({ color: 0x050505 })
+    let screenMat
+
+    if (image) {
+      const textureLoader = new THREE.TextureLoader()
+      const texture = textureLoader.load(image)
+      texture.colorSpace = THREE.SRGBColorSpace
+      screenMat = new THREE.MeshBasicMaterial({ map: texture })
+    } else {
+      screenMat = new THREE.MeshBasicMaterial({ color: 0x050505 })
+    }
+
     const screenMesh = new THREE.Mesh(screenGeo, screenMat)
     screenMesh.position.z = 0.08
     deviceGroup.add(screenMesh)
 
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.7)
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.9)
     scene.add(ambientLight)
 
     let mouseX = 0
@@ -108,7 +118,7 @@ export const ProjectDevice3D = ({ title = 'CASE STUDY PREVIEW', tag = 'MERN STAC
       screenMat.dispose()
       renderer.dispose()
     }
-  }, [])
+  }, [image])
 
   return (
     <div
@@ -116,7 +126,7 @@ export const ProjectDevice3D = ({ title = 'CASE STUDY PREVIEW', tag = 'MERN STAC
       data-cursor="view"
       className="relative w-full h-[180px] sm:h-[220px] rounded-lg border border-[#242424] bg-[#050505] overflow-hidden flex flex-col justify-between p-3"
     >
-      <div className="flex justify-between font-mono text-[10px] text-[#71717A] z-10 pointer-events-none">
+      <div className="flex justify-between font-mono text-[10px] text-[#71717A] z-10 pointer-events-none bg-black/60 backdrop-blur-sm p-1.5 rounded">
         <span className="text-[#22C55E] font-bold">{title}</span>
         <span>{tag}</span>
       </div>

@@ -54,14 +54,26 @@ const projects = [
     stack: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'JWT'],
   },
   {
-    name: 'CryptoTrack',
-    type: 'Cryptocurrency dashboard',
+    name: 'Scroll2Learn',
+    type: 'EdTech & real-time learning feed platform',
+    github: 'https://github.com/Nachi12/Scroll2Learn',
     points: [
-      'Built a real-time cryptocurrency dashboard using React.js and external APIs.',
-      'Implemented search and filtering capabilities for 100+ cryptocurrencies.',
-      'Enhanced user experience through responsive design and frontend optimization.',
+      'Built an interactive educational feed with short-form resources, community project showcases, and mentor networks.',
+      'Integrated Socket.io client/server for real-time notifications and OpenAI embeddings for semantic search.',
+      'Designed MongoDB schemas for users, resources, projects, and learning roadmaps with BullMQ queue handling.',
     ],
-    stack: ['React.js', 'External APIs', 'Responsive UI', 'Search', 'Filtering'],
+    stack: ['React 19', 'TypeScript', 'Node.js', 'Express 5', 'MongoDB', 'Socket.io', 'OpenAI'],
+  },
+  {
+    name: 'ProductivityOS Pro',
+    type: 'Enterprise personal finance SaaS',
+    github: 'https://github.com/Nachi12/-ProductivityOS-Pro',
+    points: [
+      'Architected a multi-user enterprise finance platform with integer minor unit (paise) exact money calculations.',
+      'Engineered an idempotent bank statement parser (CSV/PDF) with SHA-256 transaction fingerprints for duplicate detection.',
+      'Enforced zero cross-tenant IDOR protection, Helmet HTTP headers, Zod validation, and full Vitest suite coverage.',
+    ],
+    stack: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'TypeScript', 'Zod', 'Vitest'],
   },
 ]
 
