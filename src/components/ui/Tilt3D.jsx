@@ -3,15 +3,15 @@ import React, { useRef, useState } from 'react'
 export const Tilt3D = ({
   children,
   className = '',
-  maxTilt = 8,
-  scale = 1.015,
+  maxTilt = 6,
+  scale = 1.012,
   perspective = 1000,
   ...props
 }) => {
   const cardRef = useRef(null)
   const [style, setStyle] = useState({
     transform: `perspective(${perspective}px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`,
-    transition: 'transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1)',
+    transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
   })
 
   const handleMouseMove = (e) => {
@@ -34,14 +34,14 @@ export const Tilt3D = ({
 
     setStyle({
       transform: `perspective(${perspective}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(${scale}, ${scale}, ${scale})`,
-      transition: 'transform 0.1s cubic-bezier(0.1, 0.2, 0.1, 1)',
+      transition: 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
     })
   }
 
   const handleMouseLeave = () => {
     setStyle({
       transform: `perspective(${perspective}px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`,
-      transition: 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)',
+      transition: 'transform 0.65s cubic-bezier(0.16, 1, 0.3, 1)',
     })
   }
 

@@ -5,11 +5,12 @@ export const CustomCursor = () => {
   const [visible, setVisible] = useState(false)
   const [cursorType, setCursorType] = useState('default') // 'default' | 'pointer' | 'view' | 'magnetic'
 
-  const cursorX = useSpring(0, { stiffness: 450, damping: 28 })
-  const cursorY = useSpring(0, { stiffness: 450, damping: 28 })
+  // Ultra-fluid spring physics
+  const cursorX = useSpring(0, { stiffness: 400, damping: 30 })
+  const cursorY = useSpring(0, { stiffness: 400, damping: 30 })
 
-  const ringX = useSpring(0, { stiffness: 180, damping: 20 })
-  const ringY = useSpring(0, { stiffness: 180, damping: 20 })
+  const ringX = useSpring(0, { stiffness: 220, damping: 24 })
+  const ringY = useSpring(0, { stiffness: 220, damping: 24 })
 
   useEffect(() => {
     // Disable custom cursor on touch devices or reduced motion
@@ -67,7 +68,7 @@ export const CustomCursor = () => {
           scale: cursorType === 'pointer' ? 0.6 : cursorType === 'view' ? 0.4 : 1,
           backgroundColor: cursorType === 'view' ? '#22C55E' : '#F5F5F5',
         }}
-        transition={{ duration: 0.15 }}
+        transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
         className="fixed top-0 left-0 h-2 w-2 rounded-full bg-[#F5F5F5] mix-blend-difference"
       />
 
@@ -80,11 +81,11 @@ export const CustomCursor = () => {
           translateY: '-50%',
         }}
         animate={{
-          scale: cursorType === 'pointer' ? 1.6 : cursorType === 'view' ? 2.4 : 1,
+          scale: cursorType === 'pointer' ? 1.5 : cursorType === 'view' ? 2.2 : 1,
           borderColor: cursorType === 'view' ? 'rgba(34, 197, 94, 0.6)' : 'rgba(245, 245, 245, 0.3)',
           backgroundColor: cursorType === 'view' ? 'rgba(34, 197, 94, 0.12)' : 'rgba(255, 255, 255, 0)',
         }}
-        transition={{ duration: 0.2 }}
+        transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
         className="fixed top-0 left-0 h-8 w-8 rounded-full border border-white/30"
       >
         {cursorType === 'view' && (

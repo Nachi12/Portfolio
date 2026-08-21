@@ -1,46 +1,47 @@
 /**
- * Motion Tokens & Easing Curves for Thomas Thorstensson-Inspired Motion System
+ * Motion Tokens & Ultra-Smooth Easing Curves
+ * Inspired by luxury digital experiences (Vercel, Apple, Linear)
  */
 
-// Premium decel curve
-export const EASE_PREMIUM = [0.22, 1, 0.36, 1]
+// Premium smooth deceleration curve
+export const EASE_PREMIUM = [0.16, 1, 0.3, 1]
 
-// Exponential ease out for sharp, smooth movement
+// Ultra-fluid exponential ease out for instant responsive movement
 export const EASE_OUT_EXPO = [0.16, 1, 0.3, 1]
 
 // Smooth cubic in-out for spatial transitions
 export const EASE_IN_OUT_CUBIC = [0.65, 0, 0.35, 1]
 
-// Gentle spring physics preset for Framer Motion transitions
+// Ultra-smooth fluid spring preset for Framer Motion transitions
 export const SPRING_GENTLE = {
   type: 'spring',
-  stiffness: 260,
-  damping: 22,
-  mass: 0.8,
+  stiffness: 220,
+  damping: 24,
+  mass: 0.5,
 }
 
-// Magnetic spring return
+// Magnetic fluid spring return
 export const SPRING_MAGNETIC = {
   type: 'spring',
-  stiffness: 150,
-  damping: 15,
-  mass: 0.1,
+  stiffness: 180,
+  damping: 20,
+  mass: 0.15,
 }
 
 // Split text word reveal variant
 export const splitWordVariant = {
   hidden: {
     opacity: 0,
-    y: '110%',
-    rotateX: 18,
+    y: '100%',
+    rotateX: 12,
   },
   show: (i = 0) => ({
     opacity: 1,
     y: '0%',
     rotateX: 0,
     transition: {
-      duration: 0.75,
-      delay: i * 0.04,
+      duration: 0.8,
+      delay: i * 0.035,
       ease: EASE_PREMIUM,
     },
   }),
@@ -50,15 +51,15 @@ export const splitWordVariant = {
 export const fadeInUpScale = (delay = 0) => ({
   hidden: {
     opacity: 0,
-    y: 35,
-    scale: 0.96,
+    y: 30,
+    scale: 0.97,
   },
   show: {
     opacity: 1,
     y: 0,
     scale: 1,
     transition: {
-      duration: 0.7,
+      duration: 0.75,
       delay,
       ease: EASE_PREMIUM,
     },
@@ -80,13 +81,13 @@ export const staggerContainer = (staggerChildren = 0.08, delayChildren = 0) => (
 
 // Stagger item child
 export const staggerItem = {
-  hidden: { opacity: 0, y: 24, scale: 0.98 },
+  hidden: { opacity: 0, y: 20, scale: 0.98 },
   show: {
     opacity: 1,
     y: 0,
     scale: 1,
     transition: {
-      duration: 0.6,
+      duration: 0.65,
       ease: EASE_PREMIUM,
     },
   },
@@ -99,18 +100,18 @@ export const heroSequence = {
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.15,
+        staggerChildren: 0.09,
+        delayChildren: 0.1,
       },
     },
   },
   item: {
-    hidden: { opacity: 0, y: 28 },
+    hidden: { opacity: 0, y: 22 },
     show: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.75,
+        duration: 0.8,
         ease: EASE_PREMIUM,
       },
     },
@@ -120,10 +121,10 @@ export const heroSequence = {
 // Micro-interaction presets
 export const buttonTap = {
   scale: 0.97,
-  transition: { duration: 0.12, ease: 'easeOut' },
+  transition: { duration: 0.15, ease: [0.16, 1, 0.3, 1] },
 }
 
 export const buttonHover = {
-  scale: 1.02,
-  transition: { duration: 0.2, ease: 'easeOut' },
+  scale: 1.025,
+  transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] },
 }
