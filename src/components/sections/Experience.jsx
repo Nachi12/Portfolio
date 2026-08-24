@@ -3,9 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import SectionHeading from '../ui/SectionHeading'
 import ContinuousSectionWrapper from '../ui/ContinuousSectionWrapper'
 import Badge from '../ui/Badge'
-import Tilt3D from '../ui/Tilt3D'
 import SpatialHistory3D from '../3d/SpatialHistory3D'
-import { staggerItem } from '../../utils/motion'
 
 const experiences = [
   {
@@ -28,14 +26,14 @@ const experiences = [
     role: 'Professional Software Fellow',
     company: 'AlmaBetter Fellowship',
     period: 'Completed: 2026',
-    type: 'Specialized Engineering',
+    type: 'Specialized Training',
     location: 'Remote',
-    overview: 'Intensive fellowship specializing in modern full-stack development, AI-assisted software workflows, and system architecture.',
+    overview: 'Intensive fellowship specializing in modern full-stack development, MERN architecture, AI-assisted software workflows, and system design.',
     highlights: [
       'Mastered MERN stack architecture, asynchronous JavaScript, and Redux Toolkit state management.',
       'Practiced version control, defensive code reviews, and cloud deployment pipelines.',
     ],
-    tech: ['Full Stack', 'AI Engineering Workflows', 'MERN Architecture', 'Git/GitHub'],
+    tech: ['MERN Architecture', 'AI Workflows', 'Redux Toolkit', 'Git/GitHub'],
   },
   {
     id: 'dave',
@@ -44,7 +42,7 @@ const experiences = [
     period: 'Dec 2023 – Jan 2024',
     type: 'Internship',
     location: 'Bangalore, India',
-    overview: 'Designed high-fidelity web screen layouts and collaborated directly with frontend engineers.',
+    overview: 'Designed high-fidelity web screen layouts and collaborated directly with frontend engineering teams.',
     highlights: [
       'Created wireframes and interactive prototypes in Figma for multi-screen client applications.',
       'Collaborated with frontend developers to ensure accurate layout specs and typography hierarchy.',
@@ -73,30 +71,28 @@ export const Experience = () => {
   return (
     <ContinuousSectionWrapper id="experience" glowColor="emerald" stagger={true}>
       <SectionHeading
-        number="04"
-        eyebrow="SPATIAL HISTORY"
-        title="Experience & Career Nodes"
-        description="Professional engineering work, product development leadership, specialized fellowship, and UX design foundation."
+        number="05"
+        eyebrow="CAREER JOURNEY"
+        title="Development Progression & Milestones"
+        description="A spatial timeline tracking my professional engineering work, product development leadership, fellowship specialization, and UX design foundation."
       />
 
-      <div className="grid gap-8 lg:grid-cols-12">
+      <div className="grid gap-8 lg:grid-cols-12 items-start">
         {/* Left Column: 3D Spatial Career Nodes Visualizer */}
-        <motion.div variants={staggerItem} className="lg:col-span-4">
+        <div className="lg:col-span-4 sticky top-24">
           <SpatialHistory3D />
-        </motion.div>
+        </div>
 
-        {/* Right Column: Timeline Items */}
-        <div className="lg:col-span-8 border-l border-[#242424] pl-6 sm:pl-8 space-y-8 ml-2 relative">
+        {/* Right Column: Perfectly Aligned Vertical Timeline */}
+        <div className="lg:col-span-8 border-l border-[#242424] pl-6 sm:pl-8 space-y-6 ml-2 relative">
           {experiences.map((exp) => {
             const isExpanded = expandedId === exp.id
 
             return (
-              <motion.div key={exp.id} variants={staggerItem} className="relative">
-                {/* Active Spatial Node Indicator (Expands on Hover) */}
+              <div key={exp.id} className="relative">
+                {/* Timeline Dot Indicator */}
                 <button
                   type="button"
-                  onMouseEnter={() => setExpandedId(exp.id)}
-                  onFocus={() => setExpandedId(exp.id)}
                   onClick={() => setExpandedId(exp.id)}
                   aria-label={`Select ${exp.role} experience`}
                   className={`absolute -left-[31px] sm:-left-[39px] top-4 h-3.5 w-3.5 rounded-full cursor-pointer transition-all duration-300 border-2 ${
@@ -106,60 +102,57 @@ export const Experience = () => {
                   }`}
                 />
 
-                <Tilt3D maxTilt={4} scale={1.01}>
-                  <div
-                    onMouseEnter={() => setExpandedId(exp.id)}
-                    onClick={() => setExpandedId(exp.id)}
-                    className={`editorial-card rounded-xl p-5 cursor-pointer transition-all duration-300 ${
-                      isExpanded ? 'border-[#22C55E]/50 bg-[#0D0D0D] shadow-lg shadow-[#22C55E]/5' : 'hover:border-[#22C55E]/30'
-                    }`}
-                  >
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-[#242424] pb-3 translate-z-20">
-                      <div>
-                        <h3 className="font-sans text-base font-bold text-[#F5F5F5]">{exp.role}</h3>
-                        <p className="font-mono text-xs text-[#22C55E]">{exp.company}</p>
-                      </div>
-                      <div className="font-mono text-xs text-[#71717A] flex items-center gap-3">
-                        <span>{exp.location}</span>
-                        <span>•</span>
-                        <span className="text-[#A1A1AA]">{exp.period}</span>
-                      </div>
+                <div
+                  onClick={() => setExpandedId(exp.id)}
+                  className={`editorial-card rounded-xl p-5 cursor-pointer transition-all duration-300 ${
+                    isExpanded ? 'border-[#22C55E] bg-[#0D0D0D] shadow-lg shadow-[#22C55E]/5' : 'hover:border-[#22C55E]/30'
+                  }`}
+                >
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-[#242424] pb-3">
+                    <div>
+                      <h3 className="font-sans text-base font-bold text-[#F5F5F5]">{exp.role}</h3>
+                      <p className="font-mono text-xs text-[#22C55E] font-semibold">{exp.company}</p>
                     </div>
-
-                    <p className="font-sans text-xs leading-relaxed text-[#A1A1AA] mt-3 translate-z-10">
-                      {exp.overview}
-                    </p>
-
-                    <AnimatePresence>
-                      {isExpanded && (
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: 'auto' }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                          className="overflow-hidden"
-                        >
-                          <div className="mt-3 space-y-2 border-t border-[#242424] pt-3 font-sans text-xs text-[#A1A1AA] translate-z-10">
-                            <span className="font-mono text-[10px] text-[#22C55E] uppercase block font-bold">// Key Contributions</span>
-                            {exp.highlights.map((h, i) => (
-                              <div key={i} className="flex gap-2">
-                                <span className="text-[#22C55E] font-mono">›</span>
-                                <span>{h}</span>
-                              </div>
-                            ))}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-
-                    <div className="flex flex-wrap gap-1.5 pt-3 font-mono text-[11px] translate-z-20">
-                      {exp.tech.map((t) => (
-                        <Badge key={t} variant={isExpanded ? 'green' : 'muted'} size="xs">{t}</Badge>
-                      ))}
+                    <div className="font-mono text-xs text-[#71717A] flex items-center gap-3">
+                      <span>{exp.location}</span>
+                      <span>•</span>
+                      <span className="text-[#A1A1AA]">{exp.period}</span>
                     </div>
                   </div>
-                </Tilt3D>
-              </motion.div>
+
+                  <p className="font-sans text-xs leading-relaxed text-[#A1A1AA] mt-3">
+                    {exp.overview}
+                  </p>
+
+                  <AnimatePresence>
+                    {isExpanded && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="mt-3 space-y-2 border-t border-[#242424] pt-3 font-sans text-xs text-[#A1A1AA]">
+                          <span className="font-mono text-[10px] text-[#22C55E] uppercase block font-bold">// Key Contributions & Learnings</span>
+                          {exp.highlights.map((h, i) => (
+                            <div key={i} className="flex gap-2">
+                              <span className="text-[#22C55E] font-mono">›</span>
+                              <span>{h}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                  <div className="flex flex-wrap gap-1.5 pt-3 font-mono text-[11px]">
+                    {exp.tech.map((t) => (
+                      <Badge key={t} variant={isExpanded ? 'green' : 'muted'} size="xs">{t}</Badge>
+                    ))}
+                  </div>
+                </div>
+              </div>
             )
           })}
         </div>

@@ -2,69 +2,98 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import SectionHeading from '../ui/SectionHeading'
 import ContinuousSectionWrapper from '../ui/ContinuousSectionWrapper'
-import ScrollParallax from '../ui/ScrollParallax'
-import { staggerItem } from '../../utils/motion'
 
-const methodologySteps = [
+const typographicStatements = [
+  { step: '01', line: "I DON'T START WITH CODE.", highlight: "I START WITH THE PROBLEM." },
+  { step: '02', line: 'THEN THE SYSTEM ARCHITECTURE.', highlight: 'DATA SCHEMAS & API CONTRACTS.' },
+  { step: '03', line: 'THEN THE INTERACTION DESIGN.', highlight: 'RESPONSIVE & OPTIMISTIC UI.' },
+  { step: '04', line: 'THEN THE DEFENSIVE IMPLEMENTATION.', highlight: 'SECURED, TESTED & DEPLOYED.' },
+]
+
+const engineeringPrinciples = [
   {
     num: '01',
-    title: 'Understand & Model Requirements',
-    desc: 'Clarify product constraints, user workflows, and data relationships before writing code. Define normalized MongoDB collections and TypeScript interfaces.',
+    title: 'Understand the problem before writing code',
+    desc: 'Map out user workflows, API payload boundaries, and database entity relationships on paper or Figma before starting implementation.',
   },
   {
     num: '02',
-    title: 'Design API & State Architecture',
-    desc: 'Establish RESTful endpoint conventions, request payloads, error statuses, and frontend global state slices (Redux Toolkit) for clean data flow.',
+    title: 'Build reusable systems & clean components',
+    desc: 'Design modular React components, clean Express middleware functions, and standardized HTTP response utilities to eliminate code repetition.',
   },
   {
     num: '03',
-    title: 'Build Modular MERN Components',
-    desc: 'Develop reusable React interfaces with Tailwind CSS and modular Node.js/Express route controllers enforcing clear separation of concerns.',
+    title: 'Prioritize maintainability & defensive design',
+    desc: 'Enforce strict schema validation, type-safe API contracts, and explicit error status codes to prevent runtime bugs and silent failures.',
   },
   {
     num: '04',
-    title: 'Test & Secure Middleware Layer',
-    desc: 'Enforce JWT authentication, role-based access control (RBAC), bcrypt password hashing, and input validation to eliminate API vulnerabilities.',
+    title: 'Design for real users & performance',
+    desc: 'Optimize frontend rendering with optimistic UI updates and instant loading states, keeping key UI actions responsive across devices.',
   },
   {
     num: '05',
-    title: 'Deploy & Monitor Performance',
-    desc: 'Deploy frontend assets to Netlify and backend services to Render/Vercel with isolated environment secrets, CORS security, and Postman API verification.',
+    title: 'Validate through continuous iteration',
+    desc: 'Verify endpoint security in Postman, test edge cases locally with Vitest, and iterate on user feedback before shipping to production.',
+  },
+  {
+    num: '06',
+    title: 'Use AI tools intelligently as leverage',
+    desc: 'Use Cursor AI and GitHub Copilot to accelerate setup, generate unit tests, and write boilerplate while keeping engineering judgment in command.',
   },
 ]
 
 export const EngineeringMethodology = () => {
   return (
-    <ContinuousSectionWrapper id="methodology" glowColor="emerald" stagger={true}>
+    <ContinuousSectionWrapper id="approach" glowColor="emerald" stagger={true}>
       <SectionHeading
-        number="02"
-        eyebrow="ENGINEERING PROCESS"
-        title="How I Build Software"
-        description="A structured, defensive approach to engineering reliable web applications from data modeling to production deployment."
+        number="04"
+        eyebrow="ENGINEERING MINDSET"
+        title="How I Think When Building Software"
+        description="A scroll-driven typographic narrative reflecting my engineering mindset from problem modeling to production deployment."
       />
 
-      <div className="grid gap-6 md:grid-cols-5">
-        {methodologySteps.map((step, index) => (
+      {/* Typographic Motion Sequence */}
+      <div className="py-12 border-y border-[#242424] space-y-12">
+        {typographicStatements.map((item, index) => (
           <motion.div
-            key={step.num}
-            variants={staggerItem}
-            whileHover={{ y: -6, transition: { duration: 0.2, ease: 'easeOut' } }}
-            className="editorial-card rounded-xl p-5 flex flex-col justify-between group transition-colors hover:border-[#22C55E]/40"
+            key={item.step}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, margin: '-10% 0px -10% 0px' }}
+            transition={{ duration: 0.5 }}
+            className="space-y-1"
           >
-            <ScrollParallax speed={index % 2 === 0 ? -0.02 : 0.02}>
-              <div>
-                <span className="font-mono text-sm font-bold text-[#22C55E] block mb-3 group-hover:scale-110 origin-left transition-transform">
-                  {step.num}
-                </span>
-                <h3 className="font-sans text-sm font-bold text-[#F5F5F5] mb-2 leading-snug group-hover:text-white">
-                  {step.title}
-                </h3>
-                <p className="font-sans text-xs text-[#A1A1AA] leading-relaxed">
-                  {step.desc}
-                </p>
-              </div>
-            </ScrollParallax>
+            <div className="flex items-center gap-3 font-mono text-xs text-[#22C55E]">
+              <span>// STAGE {item.step}</span>
+              <span className="h-px w-12 bg-[#22C55E]/40" />
+            </div>
+            <h3 className="font-sans text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#71717A] uppercase tracking-tight">
+              {item.line}
+            </h3>
+            <p className="font-sans text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#22C55E] uppercase tracking-tight">
+              {item.highlight}
+            </p>
           </motion.div>
+        ))}
+      </div>
+
+      {/* Perfectly Aligned Practical Engineering Principles Grid */}
+      <div className="pt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-stretch">
+        {engineeringPrinciples.map((principle) => (
+          <div
+            key={principle.num}
+            className="editorial-card rounded-xl p-6 border border-[#242424] bg-[#0A0A0A]/95 hover:border-[#22C55E]/40 transition-colors h-full flex flex-col justify-between"
+          >
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <span className="font-mono text-sm font-bold text-[#22C55E]">{principle.num}</span>
+                <span className="h-1.5 w-1.5 rounded-full bg-[#22C55E]" />
+              </div>
+              <h4 className="font-sans text-sm font-bold text-[#F5F5F5] leading-snug">{principle.title}</h4>
+              <p className="font-sans text-xs text-[#A1A1AA] leading-relaxed mt-2">{principle.desc}</p>
+            </div>
+          </div>
         ))}
       </div>
     </ContinuousSectionWrapper>

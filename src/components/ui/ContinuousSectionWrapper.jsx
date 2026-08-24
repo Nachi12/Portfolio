@@ -17,13 +17,8 @@ export const ContinuousSectionWrapper = ({
   })
 
   // Continuous Entrance & Exit Transformation
-  // 0.0 -> Entering (start below viewport)
-  // 0.25 -> Fully in view
-  // 0.75 -> Beginning exit
-  // 1.0 -> Fully exited above viewport
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.15, 1, 1, 0.45])
-  const y = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [40, 0, 0, -25])
-  const scale = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.97, 1, 1, 0.985])
+  const opacity = useTransform(scrollYProgress, [0, 0.15, 0.85, 1], [0.2, 1, 1, 0.6])
+  const y = useTransform(scrollYProgress, [0, 0.15, 0.85, 1], [25, 0, 0, -15])
 
   const glowMap = {
     emerald: 'from-emerald-500/15 via-teal-500/5 to-transparent',
@@ -33,15 +28,15 @@ export const ContinuousSectionWrapper = ({
   }
 
   const containerVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 20 },
     show: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.65,
+        duration: 0.5,
         ease: EASE_PREMIUM,
         when: 'beforeChildren',
-        staggerChildren: stagger ? 0.08 : 0,
+        staggerChildren: stagger ? 0.06 : 0,
       },
     },
   }
@@ -50,18 +45,18 @@ export const ContinuousSectionWrapper = ({
     <motion.section
       id={id}
       ref={targetRef}
-      style={{ opacity, y, scale }}
+      style={{ opacity, y }}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: '-10% 0px -10% 0px' }}
+      viewport={{ once: true, margin: '-5% 0px -5% 0px' }}
       variants={containerVariants}
-      className={`relative py-16 sm:py-20 gpu-layer ${className}`}
+      className={`relative py-20 sm:py-28 ${className}`}
     >
-      {/* Top glowing ambient line */}
+      {/* Top glowing ambient divider line */}
       <div className={`absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[1px] bg-gradient-to-r ${glowMap[glowColor] || glowMap.emerald} opacity-70 pointer-events-none`} />
 
-      {/* Ambient glowing orb */}
-      <div className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gradient-to-b from-emerald-500/4 via-indigo-500/2 to-transparent blur-3xl rounded-full -z-10" />
+      {/* Ambient background glow */}
+      <div className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gradient-to-b from-emerald-500/5 via-indigo-500/2 to-transparent blur-3xl rounded-full -z-10" />
 
       {children}
     </motion.section>

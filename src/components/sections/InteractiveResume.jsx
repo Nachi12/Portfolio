@@ -19,7 +19,7 @@ export const InteractiveResume = () => {
   return (
     <ContinuousSectionWrapper id="resume" glowColor="emerald" stagger={true}>
       <SectionHeading
-        number="06"
+        number="07"
         eyebrow="CREDENTIALS"
         title="Resume & Qualifications"
         description="Inspect complete professional background online or launch the built-in PDF viewer to verify or download."
@@ -33,7 +33,7 @@ export const InteractiveResume = () => {
               <h3 className="font-sans text-2xl font-bold text-[#F5F5F5]">NACHIKETA NR</h3>
               <Badge variant="green" size="xs">ATS Verified</Badge>
             </div>
-            <p className="font-mono text-xs text-[#A1A1AA] mt-1">Full Stack Developer • MERN Stack Specialist • Bangalore, KA</p>
+            <p className="font-mono text-xs text-[#A1A1AA] mt-1">Full Stack Developer • React, Node.js, TypeScript, MongoDB • Bangalore, KA</p>
           </div>
 
           <div className="flex flex-wrap items-center gap-3 font-mono text-xs">
@@ -43,9 +43,9 @@ export const InteractiveResume = () => {
                 whileTap={buttonTap}
                 type="button"
                 onClick={handlePreview}
-                className="rounded bg-[#F5F5F5] px-4 py-2 text-[#050505] font-semibold hover:bg-white transition-colors"
+                className="rounded bg-[#22C55E] px-4 py-2 text-[#050505] font-bold hover:bg-[#1ea34d] transition-colors shadow-md shadow-[#22C55E]/10"
               >
-                Launch PDF Viewer
+                Launch PDF Viewer ↗
               </motion.button>
             </Magnetic>
 
@@ -63,7 +63,7 @@ export const InteractiveResume = () => {
           </div>
         </div>
 
-        {/* Structured Grid */}
+        {/* Structured Credentials Grid */}
         <div className="grid gap-6 md:grid-cols-2 font-sans text-xs">
           {/* Education */}
           <motion.div
@@ -75,7 +75,7 @@ export const InteractiveResume = () => {
             <p className="font-mono text-xs text-[#A1A1AA]">Vijayanagara College, Karnataka</p>
             <div className="flex justify-between font-mono text-[11px] text-[#71717A] pt-2 border-t border-[#242424]">
               <span>Oct 2021 – Dec 2024</span>
-              <span className="text-[#22C55E]">CGPA: 8.3 / 10.0</span>
+              <span className="text-[#22C55E] font-bold">CGPA: 8.3 / 10.0</span>
             </div>
           </motion.div>
 
@@ -89,7 +89,7 @@ export const InteractiveResume = () => {
             <p className="font-mono text-xs text-[#A1A1AA]">AlmaBetter (Software Engineering with AI & DevOps)</p>
             <div className="flex justify-between font-mono text-[11px] text-[#71717A] pt-2 border-t border-[#242424]">
               <span>Completed: 2026</span>
-              <span className="text-[#F5F5F5]">Full Stack MERN</span>
+              <span className="text-[#F5F5F5] font-bold">Full Stack MERN Specialization</span>
             </div>
           </motion.div>
         </div>

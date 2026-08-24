@@ -3,11 +3,11 @@ import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
 import RecruiterBar from './components/layout/RecruiterBar'
 import HeroSection from './components/sections/HeroSection'
+import IntroductionSection from './components/sections/IntroductionSection'
+import EngineeringStack from './components/sections/EngineeringStack'
 import CaseStudies from './components/sections/CaseStudies'
 import EngineeringMethodology from './components/sections/EngineeringMethodology'
-import EngineeringStack from './components/sections/EngineeringStack'
 import Experience from './components/sections/Experience'
-import AboutSection from './components/sections/AboutSection'
 import InteractiveResume from './components/sections/InteractiveResume'
 import ContactSection from './components/sections/ContactSection'
 import LivePreviewModal from './components/ui/LivePreviewModal'
@@ -25,28 +25,43 @@ function App() {
       <GlobalBackgroundScene />
 
       <div className="min-h-screen bg-[#050505] text-[#F5F5F5] font-sans selection:bg-[#22C55E]/20 selection:text-[#F5F5F5] relative overflow-hidden">
-        {/* Navigation Bar */}
+        {/* Navigation Bar & Progress Indicator */}
         <Navbar />
 
-        {/* Main Editorial Page Layout */}
-        <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Continuous Spatial Exhibition Layout */}
+        <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10 space-y-20 sm:space-y-32">
+          {/* 1. ARRIVAL & IDENTITY */}
           <HeroSection />
-          <CaseStudies />
-          <EngineeringMethodology />
+
+          {/* 2. DIGITAL WORLD & DEVELOPER IDENTITY */}
+          <IntroductionSection />
+
+          {/* 3. TECHNOLOGY CAPABILITIES LANDSCAPE */}
           <EngineeringStack />
+
+          {/* 4. SPATIAL PRODUCT JOURNEY (PROJECTS) */}
+          <CaseStudies />
+
+          {/* 5. TYPOGRAPHIC MOTION & ENGINEERING MINDSET */}
+          <EngineeringMethodology />
+
+          {/* 6. CAREER JOURNEY TIMELINE */}
           <Experience />
-          <AboutSection />
+
+          {/* 7. CREDENTIALS & RESUME PDF */}
           <InteractiveResume />
+
+          {/* 8. CONTACT / EXIT DESTINATION */}
           <ContactSection />
         </main>
 
-        {/* Footer */}
+        {/* Minimal Footer */}
         <Footer />
 
-        {/* Recruiter Quick Action Bar */}
+        {/* Floating Recruiter Quick Action Bar */}
         <RecruiterBar />
 
-        {/* Interactive Modal for Resume & Live Previews */}
+        {/* Interactive Modal for Live App Previews & Resume PDF */}
         <LivePreviewModal />
       </div>
     </SmoothScrollProvider>
