@@ -24,7 +24,7 @@ export const AboutSection = () => {
           </p>
 
           <p>
-            I enjoy building software that solves practical problems. Whether it's a multi-stage Kanban application tracker like <strong className="text-[#F5F5F5]">HireLog</strong> or a role-based assessment portal like <strong className="text-[#F5F5F5]">CONNECT</strong>, my goal is to craft systems that are reliable, maintainable, and straightforward for users.
+            I enjoy building software that solves practical problems. Whether it's a multi-stage Kanban application tracker like <strong className="text-[#F5F5F5]">HireLog</strong> or an autonomous AI agent orchestration platform like <strong className="text-[#F5F5F5]">AgentDesk</strong>, my goal is to craft systems that are reliable, maintainable, and straightforward for users.
           </p>
 
           <p>

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Badge from './Badge'
 import Magnetic from './Magnetic'
+import ProjectImageSlider from './ProjectImageSlider'
 import { buttonHover, buttonTap } from '../../utils/motion'
 
 export const ProjectCaseStudyModal = ({ project, onClose, onLivePreview }) => {
@@ -88,6 +89,24 @@ export const ProjectCaseStudyModal = ({ project, onClose, onLivePreview }) => {
               Role: <strong className="text-[#F5F5F5]">{project.role}</strong>
             </span>
           </div>
+
+          {/* Application Visual Showcase Gallery */}
+          {(project.images || project.image) && (
+            <div className="mt-8 space-y-2">
+              <div className="flex items-center justify-between">
+                <span className="font-mono text-[11px] text-[#71717A] uppercase tracking-wider block font-bold">
+                  // APPLICATION WORKFLOW & INTERFACE GALLERY
+                </span>
+                <span className="font-mono text-[10px] text-[#22C55E]">Slide or use arrows to view all screens</span>
+              </div>
+              <ProjectImageSlider
+                images={project.images || [project.image]}
+                projectName={project.name}
+                durationTag={project.durationTag}
+                aspectRatio="aspect-[16/9]"
+              />
+            </div>
+          )}
 
           {/* Structured Storytelling Journey: Problem -> Approach -> Architecture -> Implementation -> Result */}
           <div className="mt-8 space-y-8">

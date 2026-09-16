@@ -8,6 +8,7 @@ export const ContinuousSectionWrapper = ({
   className = '',
   glowColor = 'emerald',
   stagger = false,
+  disableTransform = false,
 }) => {
   const targetRef = useRef(null)
 
@@ -28,10 +29,10 @@ export const ContinuousSectionWrapper = ({
   }
 
   const containerVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: disableTransform ? { opacity: 0 } : { opacity: 0, y: 20 },
     show: {
       opacity: 1,
-      y: 0,
+      ...(disableTransform ? {} : { y: 0 }),
       transition: {
         duration: 0.5,
         ease: EASE_PREMIUM,
@@ -45,7 +46,7 @@ export const ContinuousSectionWrapper = ({
     <motion.section
       id={id}
       ref={targetRef}
-      style={{ opacity, y }}
+      style={disableTransform ? { opacity } : { opacity, y }}
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, margin: '-5% 0px -5% 0px' }}

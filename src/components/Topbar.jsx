@@ -43,15 +43,15 @@ const projects = [
     stack: ['React.js', 'Node.js', 'MongoDB', 'TypeScript', 'JWT'],
   },
   {
-    name: 'CONNECT',
-    type: 'Role-based mock interview platform',
-    url: 'https://connect-frontend1.netlify.app/',
+    name: 'AgentDesk',
+    type: 'Autonomous AI agent orchestration platform',
+    github: 'https://github.com/Nachi12/AgentDesk',
     points: [
-      'Developed Admin, Interviewer, and Candidate workflows for a structured interview platform.',
-      'Secured 20+ backend routes using JWT authentication and authorization.',
-      'Integrated frontend components with backend REST APIs and built responsive reusable UI components.',
+      'Engineered an enterprise autonomous AI agent platform with multi-LLM routing (OpenAI & Anthropic).',
+      'Architected hybrid database persistence: PostgreSQL (Prisma) for runs + MongoDB for raw LLM telemetry.',
+      'Implemented live execution step tracing via Socket.IO rooms, token cost tracking, and Serper API search.',
     ],
-    stack: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'JWT'],
+    stack: ['React 18', 'TypeScript', 'Node.js', 'PostgreSQL', 'MongoDB', 'Socket.IO', 'Docker'],
   },
   {
     name: 'Scroll2Learn',

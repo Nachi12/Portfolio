@@ -24,7 +24,7 @@ function App() {
       <CustomCursor />
       <GlobalBackgroundScene />
 
-      <div className="min-h-screen bg-[#050505] text-[#F5F5F5] font-sans selection:bg-[#22C55E]/20 selection:text-[#F5F5F5] relative overflow-hidden">
+      <div className="min-h-screen bg-[#050505] text-[#F5F5F5] font-sans selection:bg-[#22C55E]/20 selection:text-[#F5F5F5] relative overflow-x-clip">
         {/* Navigation Bar & Progress Indicator */}
         <Navbar />
 
